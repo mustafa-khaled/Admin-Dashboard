@@ -1,10 +1,14 @@
-import SideBar from "../components/Sidebar";
+import SideBar from "../components/sideBar/SideBar";
+import Navbar from "../components/navbar/Navbar";
 
 function Home() {
   return (
-    <div className="flex items-start ">
+    <div className="flex">
       <SideBar />
-      <div className="bg-green-500   grow-[6]">Home Container</div>
+      <div className="grow-[6]">
+        <Navbar />
+        <div className="bg-green-500">Home Container</div>
+      </div>
     </div>
   );
 }

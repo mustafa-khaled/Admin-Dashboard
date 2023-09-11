@@ -7,3 +7,8 @@
 body {
   font-family: "Nunito", sans-serif;
 }
+
+.nav-bar svg {
+  font-size: 18px;
+  cursor: pointer;
+}
