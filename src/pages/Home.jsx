@@ -1,5 +1,12 @@
+import SideBar from "../components/Sidebar";
+
 function Home() {
-  return <div className="bg-red-500">Home</div>;
+  return (
+    <div className="flex items-start ">
+      <SideBar />
+      <div className="bg-green-500   grow-[6]">Home Container</div>
+    </div>
+  );
 }
 
 export default Home;
