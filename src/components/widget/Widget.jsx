@@ -20,7 +20,7 @@ function Widget({ widget }) {
           {widget.percentage}
         </div>
         <div className={`font self-end p-[5px] rounded-md ${widget.styles.bg}`}>
-          <IconComponent className={widget.styles.bg} />
+          <IconComponent className={widget.styles.text} />
         </div>
       </div>
     </div>

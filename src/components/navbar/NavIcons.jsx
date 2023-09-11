@@ -3,7 +3,7 @@ import avatar from "/public/default-user.jpg";
 
 function NavIcons() {
   return (
-    <div className="flex items-center gap-[10px] ">
+    <div className="flex items-center gap-[15px] ">
       {navBarData.map((icon) => {
         const IconComponent = icon.icon;
         return (

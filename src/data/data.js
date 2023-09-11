@@ -184,3 +184,26 @@ export const widgetData = [
     },
   },
 ];
+
+export const featuredChartData = [
+  {
+    id: 1,
+    title: "Target",
+    value: "$12.4k",
+    styles: "text-red-500",
+  },
+
+  {
+    id: 2,
+    title: "Last Week",
+    value: "$12.4k",
+    styles: "text-green-500",
+  },
+
+  {
+    id: 3,
+    title: "Last Month",
+    value: "$12.4k",
+    styles: "text-green-500",
+  },
+];
