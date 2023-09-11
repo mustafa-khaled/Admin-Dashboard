@@ -21,6 +21,12 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import MarkChatUnreadIcon from "@mui/icons-material/MarkChatUnread";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
+// Widget Icons
+import PersonIcon from "@mui/icons-material/Person";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+
 export const sideBarLinks = [
   {
     id: 1,
@@ -120,5 +126,61 @@ export const navBarData = [
   {
     id: 6,
     icon: FormatListBulletedIcon,
+  },
+];
+
+export const widgetData = [
+  {
+    id: 1,
+    title: "Users",
+    counter: 100,
+    link: "See All Users",
+    percentage: "20%",
+    icon: PersonIcon,
+    styles: {
+      bg: "bg-red-200",
+      text: "text-red-500",
+    },
+  },
+
+  {
+    id: 2,
+    title: "Orders",
+    counter: 100,
+    link: "View All Orders",
+    percentage: "20%",
+    icon: ShoppingCartIcon,
+
+    styles: {
+      bg: "bg-yellow-200",
+      text: "text-yellow-500",
+    },
+  },
+
+  {
+    id: 3,
+    title: "Earning",
+    counter: 3213,
+    link: "View Net Earning",
+    percentage: "20%",
+    icon: CurrencyExchangeIcon,
+    styles: {
+      bg: "bg-green-200",
+      text: "text-green-500",
+    },
+  },
+
+  {
+    id: 4,
+    title: "Balance",
+    counter: 3213,
+    link: "See Details",
+    percentage: "20%",
+    icon: AccountBalanceWalletIcon,
+
+    styles: {
+      bg: "bg-purple-200",
+      text: "text-purple-500",
+    },
   },
 ];

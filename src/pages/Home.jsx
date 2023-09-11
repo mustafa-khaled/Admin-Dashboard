@@ -1,5 +1,6 @@
 import SideBar from "../components/sideBar/SideBar";
 import Navbar from "../components/navbar/Navbar";
+import WidgetList from "../components/widget/WidgetList";
 
 function Home() {
   return (
@@ -7,7 +8,7 @@ function Home() {
       <SideBar />
       <div className="grow-[6]">
         <Navbar />
-        <div className="bg-green-500">Home Container</div>
+        <WidgetList />
       </div>
     </div>
   );
