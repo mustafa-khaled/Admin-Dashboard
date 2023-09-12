@@ -150,7 +150,7 @@ export const actionColumn = [
     renderCell: (params) => {
       return (
         <div className="flex items-center gap-[15px]">
-          <Link to="/users/test">
+          <Link to={`/users/test`}>
             <div className="cursor-pointer text-gray-600">
               <RemoveRedEyeIcon />
             </div>

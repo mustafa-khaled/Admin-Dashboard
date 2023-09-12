@@ -32,71 +32,83 @@ export const sideBarLinks = [
     id: 1,
     title: "Dashboard",
     icon: DashboardIcon,
+    hrefLink: "/",
   },
 
   {
     id: 2,
     title: "Users",
     icon: PeopleOutlineIcon,
+    hrefLink: "/users",
   },
 
   {
     id: 3,
     title: "Products",
     icon: StoreIcon,
+    hrefLink: "/products",
   },
 
   {
     id: 4,
     title: "Orders",
     icon: BackupTableIcon,
+    hrefLink: "/orders",
   },
 
   {
     id: 5,
     title: "Delivery",
     icon: LocalShippingIcon,
+    hrefLink: "/delivery",
   },
 
   {
     id: 6,
     title: "Stats",
     icon: QueryStatsIcon,
+    hrefLink: "/stats",
   },
 
   {
     id: 7,
     title: "Notifications",
     icon: NotificationsIcon,
+    hrefLink: "/notifications",
   },
 
   {
     id: 8,
     title: "System Health",
     icon: HealthAndSafetyIcon,
+    hrefLink: "/systemHealth",
   },
   {
     id: 9,
     title: "Logs",
     icon: PsychologyIcon,
+    hrefLink: "/logs",
   },
 
   {
     id: 10,
     title: "Settings",
     icon: SettingsIcon,
+    hrefLink: "/settings",
   },
 
   {
     id: 11,
     title: "Profile",
     icon: AccountCircleIcon,
+    hrefLink: "/profile",
   },
 
   {
     id: 12,
     title: "Log Out",
     icon: LogoutIcon,
+    hrefLink: "/logOut",
   },
 ];
 
@@ -267,5 +279,101 @@ export const homeTableData = [
     amount: 2000,
     method: "Online",
     status: "Pending",
+  },
+];
+
+export const newUserFormInputs = [
+  {
+    id: 1,
+    label: "User Name",
+    type: "text",
+    placeholder: "John_Doe",
+    name: "userName",
+  },
+
+  {
+    id: 2,
+    label: "Name & Surname",
+    type: "text",
+    placeholder: "John Doe",
+    name: "surname",
+  },
+
+  {
+    id: 3,
+    label: "Email",
+    type: "email",
+    placeholder: "john@email.com",
+    name: "email",
+  },
+
+  {
+    id: 4,
+    label: "Phone",
+    type: "text",
+    placeholder: "+12 3214",
+    name: "phone",
+  },
+
+  {
+    id: 5,
+    label: "Password",
+    type: "password",
+    placeholder: "Password",
+    name: "password",
+  },
+
+  {
+    id: 6,
+    label: "Address",
+    type: "text",
+    placeholder: "Cairo, Egypt.",
+    name: "address",
+  },
+
+  {
+    id: 7,
+    label: "Country",
+    type: "text",
+    placeholder: "Cairo",
+    name: "country",
+  },
+];
+
+export const productInputs = [
+  {
+    id: 1,
+    label: "Title",
+    type: "text",
+    placeholder: "Apple Macbook Pro",
+    name: "title",
+  },
+  {
+    id: 2,
+    label: "Description",
+    type: "text",
+    placeholder: "Description",
+    name: "description",
+  },
+  {
+    id: 3,
+    label: "Category",
+    type: "text",
+    placeholder: "Computers",
+    name: "category",
+  },
+  {
+    id: 4,
+    label: "Price",
+    type: "text",
+    placeholder: "100",
+    name: "price",
+  },
+  {
+    id: 5,
+    label: "Stock",
+    type: "text",
+    placeholder: "in stock",
+    name: "stock",
   },
 ];

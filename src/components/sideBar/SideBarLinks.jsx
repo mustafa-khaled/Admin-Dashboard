@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { sideBarLinks } from "../../data/data";
 
 function SideBarLinks() {
@@ -7,12 +8,12 @@ function SideBarLinks() {
         {sideBarLinks.map((link) => {
           const IconComponent = link.icon;
           return (
-            <li
-              key={link.id}
-              className="flex items-center gap-[5px] py-[10px] cursor-pointer">
-              <IconComponent className="text-blue-400" />
-              <span className=" hover:text-gray-500">{link.title}</span>
-            </li>
+            <Link key={link.id} to={link.hrefLink}>
+              <li className="flex items-center gap-[5px] py-[15px] cursor-pointer">
+                <IconComponent className="text-blue-400" />
+                <span className=" hover:text-gray-500">{link.title}</span>
+              </li>
+            </Link>
           );
         })}
       </ul>

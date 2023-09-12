@@ -12,11 +12,11 @@ import { curveCardinal } from "d3-shape";
 
 const cardinal = curveCardinal.tension(0.2);
 
-function Chart() {
+function Chart({ aspect, title }) {
   return (
-    <div className="shadow-md grow-[4] p-[10px] text-gray-600">
-      <div>Last 6 Month (revenue)</div>
-      <ResponsiveContainer width="100%" aspect={3 / 1}>
+    <div className="shadow-md flex-[4] p-[10px] text-gray-600">
+      <div>{title}</div>
+      <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
           width={500}
           height={400}

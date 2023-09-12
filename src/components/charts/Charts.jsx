@@ -5,7 +5,7 @@ function Charts() {
   return (
     <div className=" px-[20px] py-[5px] flex  gap-[20px] ">
       <FeaturedChart />
-      <Chart />
+      <Chart aspect={3 / 1} title="   Last 6 Month (revenue)" />
     </div>
   );
 }

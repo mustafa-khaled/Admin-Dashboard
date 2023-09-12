@@ -4,7 +4,7 @@ function Widget({ widget }) {
   const IconComponent = widget.icon;
 
   return (
-    <div className="flex grow-[1] p-[10px] justify-between  shadow-md rounded-[10px] min-h-[100px] ">
+    <div className="flex flex-[1] p-[10px] justify-between  shadow-md rounded-[10px] min-h-[100px] ">
       <div className="flex flex-col justify-between">
         <span className="text-[14px] text-gray-300 font-semibold">
           {widget.title}
