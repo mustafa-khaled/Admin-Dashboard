@@ -6,7 +6,7 @@ import { featuredChartData } from "../../data/data";
 
 function FeaturedChart() {
   return (
-    <div className="bg-blue-200 grow-[2] p-[10px]">
+    <div className=" shadow-md grow-[2] p-[10px]  text-gray-600">
       <div className="flex items-center justify-between text-gray-500">
         <h1>Total Revenue</h1>
         <MoreVertIcon fontSize="small" className="cursor-pointer" />
