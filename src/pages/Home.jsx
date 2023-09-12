@@ -6,7 +6,7 @@ import HomeTable from "../components/homeTable/HomeTable";
 
 function Home() {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <SideBar />
       <div className="grow-[6]">
         <Navbar />
