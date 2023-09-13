@@ -373,3 +373,21 @@ export const productInputs = [
     name: "stock",
   },
 ];
+
+export const loginForm = [
+  {
+    id: 1,
+    label: "Email:",
+    name: "email",
+    type: "text",
+    placeholder: "Enter Your Email",
+  },
+
+  {
+    id: 2,
+    label: "Password:",
+    name: "password",
+    type: "password",
+    placeholder: "Enter Your Password",
+  },
+];
