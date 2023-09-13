@@ -15,7 +15,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 // Nav Bar Icons
 import LanguageIcon from "@mui/icons-material/Language";
-import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import MarkChatUnreadIcon from "@mui/icons-material/MarkChatUnread";
@@ -117,10 +116,7 @@ export const navBarData = [
     id: 1,
     icon: LanguageIcon,
   },
-  {
-    id: 2,
-    icon: NightlightRoundIcon,
-  },
+
   {
     id: 3,
     icon: FullscreenExitIcon,

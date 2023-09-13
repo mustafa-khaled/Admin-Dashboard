@@ -6,10 +6,13 @@ import { featuredChartData } from "../../data/data";
 
 function FeaturedChart() {
   return (
-    <div className=" shadow-md flex-[2] p-[10px]  text-gray-600">
-      <div className="flex items-center justify-between text-gray-500">
+    <div className=" shadow-md flex-[2] p-[10px] bg-colorGrey2 text-textColor">
+      <div className="flex items-center justify-between ">
         <h1>Total Revenue</h1>
-        <MoreVertIcon fontSize="small" className="cursor-pointer" />
+        <MoreVertIcon
+          fontSize="small"
+          className="cursor-pointer text-textColor"
+        />
       </div>
       <div className="p-[20px] flex flex-col items-center justify-center gap-[10px]">
         <div className="w-[100px] h-[100px]">
@@ -21,7 +24,7 @@ function FeaturedChart() {
           {featuredChartData.map((item) => {
             return (
               <div key={item.id}>
-                <div className="text-gray-500 text-[14px]">{item.title}</div>
+                <div className=" text-[14px]">{item.title}</div>
                 <div>
                   <div
                     className={`flex font-semibold items-center gap-[5px] text-[14px] ${item.styles} mt-[10px]`}>

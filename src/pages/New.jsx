@@ -1,24 +1,23 @@
 import { useState } from "react";
-import Input from "../components/Input";
+import Input from "../ui/Input";
 import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sideBar/SideBar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import Button from "../ui/Button";
 
 function New({ inputs, title }) {
   const [file, setFile] = useState("");
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full text-textColor">
       <SideBar />
       <div className="flex-[6]">
         <Navbar />
         <div>
-          <div className="p-[20px] m-[20px] shadow-md">
-            <h1 className="text-gray-600 text-xl font-semibold">
-              Add New {title}
-            </h1>
+          <div className="p-[20px] m-[20px] shadow-md bg-colorGrey2">
+            <h1 className="text-xl font-semibold">Add New {title}</h1>
           </div>
-          <div className="p-[20px] m-[20px] shadow-md flex">
+          <div className="p-[20px] m-[20px] shadow-md flex bg-colorGrey2">
             <div className="flex-[1]   h-[100px] ">
               <img
                 src={
@@ -43,7 +42,7 @@ function New({ inputs, title }) {
                   <input
                     type="file"
                     id="file"
-                    className="hidden w-full"
+                    className="hidden w-full "
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </div>
@@ -54,10 +53,9 @@ function New({ inputs, title }) {
                     </div>
                   );
                 })}
-
-                <button className="w-[150px]  text-gray-50 bg-gray-500 mt-[10px] p-[5px] hover:bg-gray-400">
-                  Send
-                </button>
+                <div className="w-[100%] text-start px-[30px]">
+                  <Button>Send</Button>
+                </div>
               </form>
             </div>
           </div>

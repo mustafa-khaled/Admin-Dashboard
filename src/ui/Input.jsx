@@ -6,7 +6,7 @@ function Input({ input }) {
         type={input.type}
         id={input.name}
         placeholder={input.placeholder}
-        className="w-full border-b border-gray-300 outline-none p-[5px]"
+        className="w-full border-b border-gray-300 outline-none p-[5px] bg-transparent"
       />
     </>
   );

@@ -7,10 +7,11 @@ export const userColumns = [
   {
     field: "user",
     headerName: "User",
+
     width: 230,
     renderCell: (params) => {
       return (
-        <div className="flex items-center gap-[10px]">
+        <div className="flex items-center gap-[10px] ">
           <img
             className="w-[32px] h-[32px]"
             src={params.row.img}

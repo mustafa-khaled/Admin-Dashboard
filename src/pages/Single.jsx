@@ -6,16 +6,16 @@ import TableComponent from "../components/homeTable/Table";
 
 function Single() {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full text-textColor">
       <SideBar />
       <div className="flex-[6]">
         <Navbar />
         <div className="p-[20px] flex gap-[20px]">
-          <div className="flex-[1]  p-[20px] shadow-md relative ">
-            <div className="absolute right-[20px] top-[10px] cursor-pointer bg-blue-200 p-[3px] rounded-md">
-              <BorderColorIcon className=" text-blue-500" />
+          <div className="flex-[1]  p-[20px] shadow-md relative bg-colorGrey2">
+            <div className="absolute right-[20px] top-[10px] cursor-pointer bg-colorBrand hover:bg-hoverBrand p-[3px] rounded-md">
+              <BorderColorIcon className=" text-colorGrey" />
             </div>
-            <h1 className="mb-[20px] text-lg text-gray-700">Information</h1>
+            <h1 className="mb-[20px] text-lg ">Information</h1>
             <div className="flex  gap-[20px]">
               <img
                 src="https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -23,9 +23,7 @@ function Single() {
                 className="w-[100px] h-[100px] rounded-full object-cover"
               />
               <div>
-                <h1 className="mb-[10px] text-gray-700 text-2xl">
-                  Mustafa Khaled
-                </h1>
+                <h1 className="mb-[10px]  text-2xl">Mustafa Khaled</h1>
                 <div>
                   <div>
                     <span className="mr-[4px]">Email:</span>
@@ -55,9 +53,7 @@ function Single() {
           </div>
         </div>
         <div className="p-[20px] shadow-md my-[10px] mx-[20px]">
-          <h1 className="mb-[20px] text-lg text-gray-700 ">
-            Last Transactions
-          </h1>
+          <h1 className="mb-[20px] text-lg ">Last Transactions</h1>
           <TableComponent />
         </div>
       </div>

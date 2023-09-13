@@ -3,7 +3,7 @@ import SideBarLinks from "./SideBarLinks";
 
 function SideBar() {
   return (
-    <div className=" flex-[1] border-r border-gray-200 min-h-[100vh]">
+    <div className=" flex-[1] border-r border-borderColor min-h-[100vh] bg-colorGrey2">
       <Logo />
       <SideBarLinks />
     </div>

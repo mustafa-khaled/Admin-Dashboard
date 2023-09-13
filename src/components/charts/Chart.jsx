@@ -14,7 +14,7 @@ const cardinal = curveCardinal.tension(0.2);
 
 function Chart({ aspect, title }) {
   return (
-    <div className="shadow-md flex-[4] p-[10px] text-gray-600">
+    <div className="shadow-md  flex-[4] p-[10px] bg-colorGrey2">
       <div>{title}</div>
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
@@ -33,8 +33,8 @@ function Chart({ aspect, title }) {
           <Area
             type="monotone"
             dataKey="Total"
-            stroke="#8884d8"
-            fill="#8884d8"
+            stroke="var(--color-brand-700)"
+            fill="var(--color-brand-800)"
             fillOpacity={0.3}
           />
         </AreaChart>

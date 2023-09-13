@@ -4,11 +4,9 @@ function Widget({ widget }) {
   const IconComponent = widget.icon;
 
   return (
-    <div className="flex flex-[1] p-[10px] justify-between  shadow-md rounded-[10px] min-h-[100px] ">
+    <div className="flex flex-[1] p-[10px] justify-between  bg-colorGrey2  shadow-md rounded-[10px] min-h-[100px] ">
       <div className="flex flex-col justify-between">
-        <span className="text-[14px] text-gray-300 font-semibold">
-          {widget.title}
-        </span>
+        <span className="text-[14px] font-semibold">{widget.title}</span>
         <span className="text-[28px] font-bold">{widget.counter}</span>
         <span className="text-[12px] cursor-pointer underline">
           {widget.link}
