@@ -1,11 +1,43 @@
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
 
 import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sideBar/SideBar";
-import AddNewForm from "../components/AddNewForm";
+import Form from "../ui/Form";
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+
+const initialValues = {
+  userName: "",
+  surName: "",
+  email: "",
+  phone: "",
+  password: "",
+  address: "",
+  country: "",
+  error: "",
+};
 
 function New({ inputs, title }) {
   const [file, setFile] = useState("");
+
+  const [values, setValues] = useState(initialValues);
+  const { email, password, error } = values;
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "users", res.user.uid), {
+        ...values,
+        timeStamp: serverTimestamp(),
+      });
+      setValues(initialValues);
+    } catch (err) {
+      setValues({ ...values, error: err.message });
+    }
+  };
 
   return (
     <div className="flex w-full text-textColor">
@@ -30,7 +62,27 @@ function New({ inputs, title }) {
             </div>
 
             <div className="flex-[2] ">
-              <AddNewForm setFile={setFile} inputs={inputs} />
+              <Form
+                inputs={inputs}
+                values={values}
+                setValues={setValues}
+                handleSubmit={handleAdd}
+                error={error}>
+                <div className="w-[40%]">
+                  <label
+                    htmlFor="file"
+                    className="flex items-center gap-[10px] mt-[20px] ">
+                    Image:
+                    <DriveFolderUploadOutlinedIcon className="cursor-pointer" />
+                  </label>
+                  <input
+                    type="file"
+                    id="file"
+                    className="hidden w-full "
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </div>
+              </Form>
             </div>
           </div>
         </div>

@@ -28,7 +28,6 @@ function LoginForm() {
       .then((userCredential) => {
         const user = userCredential.user;
         dispatch(loginUser(user));
-        console.log(user);
         navigate("/");
       })
       .catch((error) => {
@@ -38,6 +37,7 @@ function LoginForm() {
 
   return (
     <Form
+      styles="w-[400px]"
       inputs={loginFormInputs}
       values={values}
       setValues={setValues}

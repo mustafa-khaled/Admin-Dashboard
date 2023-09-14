@@ -1,6 +1,14 @@
 import Button from "./Button";
 
-function Form({ inputs, values, setValues, error, handleSubmit, styles }) {
+function Form({
+  inputs,
+  values,
+  setValues,
+  error,
+  handleSubmit,
+  styles,
+  children,
+}) {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -9,9 +17,10 @@ function Form({ inputs, values, setValues, error, handleSubmit, styles }) {
     <form
       onSubmit={handleSubmit}
       className={`bg-colorGrey2 p-[20px] ${styles} `}>
+      {children}
       {inputs.map((input) => {
         return (
-          <div key={input.id} className="w-[400px]  mb-[30px]">
+          <div key={input.id} className="  mb-[30px]">
             <input
               key={input.id}
               name={input.name}
