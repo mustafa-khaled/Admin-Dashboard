@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Input from "../ui/Input";
+
 import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sideBar/SideBar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import Button from "../ui/Button";
+import AddNewForm from "../components/AddNewForm";
 
 function New({ inputs, title }) {
   const [file, setFile] = useState("");
@@ -31,32 +30,7 @@ function New({ inputs, title }) {
             </div>
 
             <div className="flex-[2] ">
-              <form className="flex flex-wrap gap-[20px] justify-around">
-                <div className="w-[40%]">
-                  <label
-                    htmlFor="file"
-                    className="flex items-center gap-[10px] mt-[20px] ">
-                    Image:
-                    <DriveFolderUploadOutlinedIcon className="cursor-pointer" />
-                  </label>
-                  <input
-                    type="file"
-                    id="file"
-                    className="hidden w-full "
-                    onChange={(e) => setFile(e.target.files[0])}
-                  />
-                </div>
-                {inputs.map((input) => {
-                  return (
-                    <div key={input.id} className="w-[40%]">
-                      <Input input={input} />
-                    </div>
-                  );
-                })}
-                <div className="w-[100%] text-start px-[30px]">
-                  <Button>Send</Button>
-                </div>
-              </form>
+              <AddNewForm setFile={setFile} inputs={inputs} />
             </div>
           </div>
         </div>

@@ -281,7 +281,7 @@ export const homeTableData = [
 export const newUserFormInputs = [
   {
     id: 1,
-    label: "User Name",
+    label: "User Name:",
     type: "text",
     placeholder: "John_Doe",
     name: "userName",
@@ -289,15 +289,15 @@ export const newUserFormInputs = [
 
   {
     id: 2,
-    label: "Name & Surname",
+    label: "Name & Surname:",
     type: "text",
     placeholder: "John Doe",
-    name: "surname",
+    name: "surName",
   },
 
   {
     id: 3,
-    label: "Email",
+    label: "Email:",
     type: "email",
     placeholder: "john@email.com",
     name: "email",
@@ -305,7 +305,7 @@ export const newUserFormInputs = [
 
   {
     id: 4,
-    label: "Phone",
+    label: "Phone:",
     type: "text",
     placeholder: "+12 3214",
     name: "phone",
@@ -313,7 +313,7 @@ export const newUserFormInputs = [
 
   {
     id: 5,
-    label: "Password",
+    label: "Password:",
     type: "password",
     placeholder: "Password",
     name: "password",
@@ -321,7 +321,7 @@ export const newUserFormInputs = [
 
   {
     id: 6,
-    label: "Address",
+    label: "Address:",
     type: "text",
     placeholder: "Cairo, Egypt.",
     name: "address",
@@ -329,7 +329,7 @@ export const newUserFormInputs = [
 
   {
     id: 7,
-    label: "Country",
+    label: "Country:",
     type: "text",
     placeholder: "Cairo",
     name: "country",

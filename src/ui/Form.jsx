@@ -1,12 +1,14 @@
 import Button from "./Button";
 
-function Form({ inputs, values, setValues, error, handleSubmit }) {
+function Form({ inputs, values, setValues, error, handleSubmit, styles }) {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-colorGrey2 p-[20px]  ">
+    <form
+      onSubmit={handleSubmit}
+      className={`bg-colorGrey2 p-[20px] ${styles} `}>
       {inputs.map((input) => {
         return (
           <div key={input.id} className="w-[400px]  mb-[30px]">
