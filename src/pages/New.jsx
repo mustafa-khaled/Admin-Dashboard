@@ -68,7 +68,8 @@ function New({ inputs, title }) {
                 setValues={setValues}
                 handleSubmit={handleAdd}
                 error={error}>
-                <div className="w-[40%]">
+                {/* Pass Image Uploader as child */}
+                <div className="w-[40%] mb-[20px]">
                   <label
                     htmlFor="file"
                     className="flex items-center gap-[10px] mt-[20px] ">
