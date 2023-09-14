@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.userId);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     if (!user) {

@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { toggleDarkMode } from "../../redux/darkModeSlice";
+import { toggleDarkMode } from "../../redux/features/darkModeSlice";
+import { useEffect } from "react";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
-import { useEffect } from "react";
 
 function DarkModeBtn() {
   const { mode } = useSelector((state) => state.darkMode);

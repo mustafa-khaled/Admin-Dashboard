@@ -4,7 +4,7 @@ import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/authSlice";
+import { loginUser } from "../../redux/features/authSlice";
 import Form from "../../ui/Form";
 
 // mustafa@user.com
@@ -27,7 +27,8 @@ function LoginForm() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        dispatch(loginUser(user.uid));
+        dispatch(loginUser(user));
+        console.log(user);
         navigate("/");
       })
       .catch((error) => {
