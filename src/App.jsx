@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import List from "./pages/List";
 import Single from "./pages/Single";
 import New from "./pages/New";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 function App() {
   return (
@@ -12,23 +13,66 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
             <Route path="login" element={<Login />} />
             <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":userId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="new"
-                element={<New inputs={newUserFormInputs} title="User" />}
+                element={
+                  <ProtectedRoute>
+                    <New inputs={newUserFormInputs} title="User" />
+                  </ProtectedRoute>
+                }
               />
             </Route>
 
             <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":productId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Product" />}
+                element={
+                  <ProtectedRoute>
+                    <New inputs={productInputs} title="Product" />
+                  </ProtectedRoute>
+                }
               />
             </Route>
           </Route>

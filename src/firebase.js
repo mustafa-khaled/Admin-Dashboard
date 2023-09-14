@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.FIRE_BASE_KEY,
+  apiKey: process.env.REACT_APP_ADMIN_DASHBOARD_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_ADMIN_DASHBOARD_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_ADMIN_DASHBOARD_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_ADMIN_DASHBOARD_FIREBASE_STORAGE_BUCKET,
@@ -12,3 +12,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth();

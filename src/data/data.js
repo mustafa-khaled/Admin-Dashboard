@@ -374,7 +374,7 @@ export const productInputs = [
   },
 ];
 
-export const loginForm = [
+export const loginFormInputs = [
   {
     id: 1,
     label: "Email:",

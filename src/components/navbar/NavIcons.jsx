@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { navBarData } from "../../data/data";
 import DarkModeBtn from "./DarkModeBtn";
 import avatar from "/public/default-user.jpg";
@@ -21,7 +22,9 @@ function NavIcons() {
         );
       })}
 
-      <img src={avatar} alt="Avatar" className="w-[20px]" />
+      <Link to="login">
+        <img src={avatar} alt="Avatar" className="w-[20px]" />
+      </Link>
     </div>
   );
 }
