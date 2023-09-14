@@ -135,6 +135,12 @@ export const navBarData = [
     id: 6,
     icon: FormatListBulletedIcon,
   },
+
+  {
+    id: 7,
+    icon: AccountCircleIcon,
+    to: "/login",
+  },
 ];
 
 export const widgetData = [

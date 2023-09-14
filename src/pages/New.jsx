@@ -6,7 +6,7 @@ import { auth, db } from "../firebase";
 import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sideBar/SideBar";
 import Form from "../ui/Form";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import UploadImage from "../components/UploadImage";
 
 const initialValues = {
   userName: "",
@@ -20,13 +20,16 @@ const initialValues = {
 };
 
 function New({ inputs, title }) {
-  const [file, setFile] = useState("");
-
   const [values, setValues] = useState(initialValues);
   const { email, password, error } = values;
+  const [file, setFile] = useState("");
+  const [per, setPer] = useState(null);
 
   const handleAdd = async (e) => {
     e.preventDefault();
+
+    if (!email || !password) return;
+
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "users", res.user.uid), {
@@ -34,6 +37,7 @@ function New({ inputs, title }) {
         timeStamp: serverTimestamp(),
       });
       setValues(initialValues);
+      setFile("");
     } catch (err) {
       setValues({ ...values, error: err.message });
     }
@@ -67,22 +71,16 @@ function New({ inputs, title }) {
                 values={values}
                 setValues={setValues}
                 handleSubmit={handleAdd}
-                error={error}>
+                error={error}
+                // To Disable The btn while uploading
+                disable={per === null && per < 100}>
                 {/* Pass Image Uploader as child */}
-                <div className="w-[40%] mb-[20px]">
-                  <label
-                    htmlFor="file"
-                    className="flex items-center gap-[10px] mt-[20px] ">
-                    Image:
-                    <DriveFolderUploadOutlinedIcon className="cursor-pointer" />
-                  </label>
-                  <input
-                    type="file"
-                    id="file"
-                    className="hidden w-full "
-                    onChange={(e) => setFile(e.target.files[0])}
-                  />
-                </div>
+                <UploadImage
+                  file={file}
+                  setFile={setFile}
+                  setValues={setValues}
+                  setPer={setPer}
+                />
               </Form>
             </div>
           </div>

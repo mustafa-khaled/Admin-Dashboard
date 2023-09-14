@@ -7,6 +7,7 @@ function Form({
   error,
   handleSubmit,
   styles,
+  disable,
   children,
 }) {
   const onChange = (e) => {
@@ -35,7 +36,7 @@ function Form({
       })}
 
       <div className="w-[100%]">
-        <Button type="submit" styles={"w-[100%]"}>
+        <Button disable={disable} type="submit" styles={"w-[100%]"}>
           Submit
         </Button>
       </div>

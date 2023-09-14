@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { navBarData } from "../../data/data";
 import DarkModeBtn from "./DarkModeBtn";
-import avatar from "/public/default-user.jpg";
 
 function NavIcons() {
   return (
@@ -11,8 +10,9 @@ function NavIcons() {
         const IconComponent = icon.icon;
         return (
           <div key={icon.id} className="relative">
-            <IconComponent className="text-colorBrand" />
-
+            <Link to={icon.to}>
+              <IconComponent className="text-colorBrand" />
+            </Link>
             {icon.before && (
               <div className="absolute bg-red-600 top-[-5px] right-[-5px] text-gray-200 h-[15px] w-[15px] text-[10px] flex items-center justify-center rounded-full">
                 {icon.before}
@@ -21,10 +21,6 @@ function NavIcons() {
           </div>
         );
       })}
-
-      <Link to="login">
-        <img src={avatar} alt="Avatar" className="w-[20px]" />
-      </Link>
     </div>
   );
 }
