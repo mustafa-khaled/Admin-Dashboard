@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/navbar/Navbar";
 import SideBar from "../components/sideBar/SideBar";
@@ -25,6 +26,8 @@ function New({ inputs, title }) {
   const [file, setFile] = useState("");
   const [per, setPer] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -38,6 +41,7 @@ function New({ inputs, title }) {
       });
       setValues(initialValues);
       setFile("");
+      navigate(-1);
     } catch (err) {
       setValues({ ...values, error: err.message });
     }

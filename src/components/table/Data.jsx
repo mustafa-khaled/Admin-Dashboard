@@ -51,7 +51,7 @@ export const userColumns = [
               " text-red-500 bg-red-200 p-[3px] rounded-md"
             }         
           `}>
-          {params.row.status}
+          {params.row.country}
         </div>
       );
     },

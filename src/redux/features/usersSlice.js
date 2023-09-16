@@ -1,39 +1,45 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDocs, collection } from "firebase/firestore";
+import { createSlice } from "@reduxjs/toolkit";
+import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 import { deleteUser } from "./deleteUser";
 
 const initialState = [];
-// Get All Users
-export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const users = [];
-  try {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-      const user = { id: doc.id, ...doc.data() };
-      // Convert Firestore Timestamp to a serializable format (string)
-      user.timeStamp = user.timeStamp.toDate().toISOString();
-      users.push(user);
+
+export const fetchUsers = () => {
+  return (dispatch) => {
+    const usersCollection = collection(db, "users");
+
+    // Set up a real-time listener using onSnapshot
+    onSnapshot(usersCollection, (querySnapshot) => {
+      const users = [];
+
+      querySnapshot.forEach((doc) => {
+        const user = { id: doc.id, ...doc.data() };
+        // Convert Firestore Timestamp to a serializable format (string)
+        user.timeStamp = user.timeStamp.toDate().toISOString();
+        users.push(user);
+      });
+
+      // Dispatch the updated users to the Redux store
+      dispatch(usersFetched(users));
     });
-    return users;
-  } catch (error) {
-    throw error;
-  }
-});
+  };
+};
 
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    usersFetched: (state, action) => {
+      return action.payload;
+    },
+  },
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchUsers.fulfilled, (state, action) => {
-        return action.payload;
-      }) //Delete User
-      .addCase(deleteUser.fulfilled, (state, action) => {
-        return state.filter((user) => user.id !== action.payload);
-      });
+    builder.addCase(deleteUser.fulfilled, (state, action) => {
+      return state.filter((user) => user.id !== action.payload);
+    });
   },
 });
 
+export const { usersFetched } = usersSlice.actions;
 export default usersSlice.reducer;
