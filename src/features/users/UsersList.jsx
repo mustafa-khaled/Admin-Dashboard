@@ -1,10 +1,9 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, actionColumn } from "./UsersData";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../redux/features/usersSlice";
-import Button from "../../ui/Button";
+import AddNewUser from "./AddNewUser";
 
 function UsersList() {
   const users = useSelector((state) => state.users);
@@ -18,9 +17,7 @@ function UsersList() {
     <div className="p-[20px] text-textColor">
       <div className=" flex items-center justify-between gap-[10px] my-[10px]">
         <h1 className="p-[5px]">Users:</h1>
-        <Link to={"/users/new"}>
-          <Button>Add New User</Button>
-        </Link>
+        <AddNewUser />
       </div>
 
       <DataGrid

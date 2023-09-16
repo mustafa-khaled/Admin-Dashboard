@@ -13,13 +13,6 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-// Nav Bar Icons
-import LanguageIcon from "@mui/icons-material/Language";
-import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import MarkChatUnreadIcon from "@mui/icons-material/MarkChatUnread";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-
 // Widget Icons
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -108,38 +101,6 @@ export const sideBarLinks = [
     title: "Log Out",
     icon: LogoutIcon,
     hrefLink: "/logOut",
-  },
-];
-
-export const navBarData = [
-  {
-    id: 1,
-    icon: LanguageIcon,
-  },
-
-  {
-    id: 3,
-    icon: FullscreenExitIcon,
-  },
-  {
-    id: 4,
-    icon: NotificationsActiveIcon,
-    before: 2,
-  },
-  {
-    id: 5,
-    icon: MarkChatUnreadIcon,
-    before: 1,
-  },
-  {
-    id: 6,
-    icon: FormatListBulletedIcon,
-  },
-
-  {
-    id: 7,
-    icon: AccountCircleIcon,
-    to: "/login",
   },
 ];
 

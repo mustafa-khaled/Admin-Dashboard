@@ -1,18 +1,17 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
-import ProductsList from "../components/products/ProductsList";
 import SideBar from "../components/sideBar/SideBar";
-import UsersList from "../components/users/UsersList";
 
-function List({ role }) {
+function AppLayout() {
   return (
     <div className="flex w-full">
       <SideBar />
       <div className="flex-[6]">
         <Navbar />
-        {role === "users" ? <UsersList /> : <ProductsList />}
+        <Outlet />
       </div>
     </div>
   );
 }
 
-export default List;
+export default AppLayout;

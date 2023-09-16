@@ -46,7 +46,9 @@ function UploadImage({ file, setFile, setValues, setPer }) {
 
   return (
     <div className="w-[40%] mb-[20px]">
-      <label htmlFor="file" className="flex items-center gap-[10px] mt-[20px] ">
+      <label
+        htmlFor="file"
+        className="flex items-center gap-[10px] mt-[20px] text-textColor">
         Image:
         <DriveFolderUploadOutlinedIcon className="cursor-pointer" />
       </label>

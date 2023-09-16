@@ -21,7 +21,7 @@ function Form({
       {children}
       {inputs.map((input) => {
         return (
-          <div key={input.id} className="  mb-[30px]">
+          <div key={input.id} className="mb-[30px] flex">
             <input
               key={input.id}
               name={input.name}

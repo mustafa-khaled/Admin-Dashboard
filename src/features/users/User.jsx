@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../firebase";
-import Chart from "../charts/Chart";
+import Chart from "../../components/charts/Chart";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 function User() {
@@ -24,7 +24,7 @@ function User() {
   }, [userId]);
 
   return (
-    <div className="p-[20px] flex gap-[20px]">
+    <div className="p-[20px] flex gap-[20px] text-textColor">
       <div className="flex-[1]  p-[20px] shadow-md relative bg-colorGrey2">
         <div className="absolute right-[20px] top-[10px] cursor-pointer bg-colorBrand hover:bg-hoverBrand p-[3px] rounded-md">
           <BorderColorIcon className=" text-colorGrey" />
@@ -63,7 +63,7 @@ function User() {
         </div>
       </div>
       <div className="flex-[2]  shadow-md">
-        <Chart aspect={4 / 1} title="User Spending (Last 6 Month)" />
+        <Chart aspect={3 / 1} title="User Spending (Last 6 Month)" />
       </div>
     </div>
   );

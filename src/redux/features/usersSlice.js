@@ -16,7 +16,7 @@ export const fetchUsers = () => {
       querySnapshot.forEach((doc) => {
         const user = { id: doc.id, ...doc.data() };
         // Convert Firestore Timestamp to a serializable format (string)
-        user.timeStamp = user.timeStamp.toDate().toISOString();
+        user.timeStamp = user.timeStamp?.toDate()?.toISOString();
         users.push(user);
       });
 
