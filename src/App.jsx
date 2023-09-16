@@ -27,7 +27,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List />
+                    <List role="users" />
                   </ProtectedRoute>
                 }
               />
@@ -35,7 +35,7 @@ function App() {
                 path=":userId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <Single role="user" />
                   </ProtectedRoute>
                 }
               />
@@ -54,7 +54,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List />
+                    <List role="products" />
                   </ProtectedRoute>
                 }
               />
@@ -62,7 +62,7 @@ function App() {
                 path=":productId"
                 element={
                   <ProtectedRoute>
-                    <Single />
+                    <Single role="products" />
                   </ProtectedRoute>
                 }
               />
