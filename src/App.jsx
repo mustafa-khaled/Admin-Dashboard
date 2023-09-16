@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { newUserFormInputs, productInputs } from "./data/data";
+import { newUserFormInputs, newProductFormInputs } from "./data/data";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import List from "./pages/List";
@@ -70,7 +70,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Product" />
+                    <New inputs={newProductFormInputs} title="Product" />
                   </ProtectedRoute>
                 }
               />

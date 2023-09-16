@@ -1,9 +1,19 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { userRows, userColumns, actionColumn } from "./Data";
+import { userColumns, actionColumn } from "./Data";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers } from "../../redux/features/usersSlice";
 import Button from "../../ui/Button";
 
 function DataTable() {
+  const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   return (
     <div className="p-[20px] text-textColor">
       <div className=" flex items-center justify-between gap-[10px] my-[10px]">
@@ -14,7 +24,7 @@ function DataTable() {
       </div>
 
       <DataGrid
-        rows={userRows}
+        rows={users}
         columns={userColumns.concat(actionColumn)}
         initialState={{
           pagination: {

@@ -342,7 +342,7 @@ export const newUserFormInputs = [
   },
 ];
 
-export const productInputs = [
+export const newProductFormInputs = [
   {
     id: 1,
     label: "Title",
