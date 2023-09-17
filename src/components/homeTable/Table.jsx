@@ -1,4 +1,4 @@
-import { homeTableData } from "../../data/data";
+import { homeTableData, homeTableHead } from "../../data/data";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,41 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
-const homeTableHead = [
-  {
-    id: 1,
-    title: "Tracking ID",
-  },
-
-  {
-    id: 2,
-    title: "Product",
-  },
-
-  {
-    id: 3,
-    title: "Customer",
-  },
-  {
-    id: 4,
-    title: "Date",
-  },
-
-  {
-    id: 5,
-    title: "Amount",
-  },
-
-  {
-    id: 6,
-    title: "Payment Method",
-  },
-  {
-    id: 7,
-    title: "  Amoun",
-  },
-];
 
 function TableComponent() {
   return (

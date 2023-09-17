@@ -18,7 +18,7 @@ const initialValues = {
   error: "",
 };
 
-function CreateUserForm({ userToEdit, onCloseModal }) {
+function CreateEditUserForm({ userToEdit, onCloseModal }) {
   const [values, setValues] = useState(userToEdit || initialValues);
   const { email, password, error } = values;
   const [file, setFile] = useState("");
@@ -36,7 +36,10 @@ function CreateUserForm({ userToEdit, onCloseModal }) {
       if (isEditSession) {
         // Update the existing user
         userDocRef = doc(db, "users", userToEdit.id);
-        await setDoc(userDocRef, { ...values, timeStamp: serverTimestamp() });
+        await setDoc(userDocRef, {
+          ...values,
+          timeStamp: serverTimestamp(),
+        });
       } else {
         // Create a new user
         const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -89,4 +92,4 @@ function CreateUserForm({ userToEdit, onCloseModal }) {
   );
 }
 
-export default CreateUserForm;
+export default CreateEditUserForm;

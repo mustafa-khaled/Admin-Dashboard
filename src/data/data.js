@@ -11,7 +11,6 @@ import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LogoutIcon from "@mui/icons-material/Logout";
 
 // Widget Icons
 import PersonIcon from "@mui/icons-material/Person";
@@ -94,13 +93,6 @@ export const sideBarLinks = [
     title: "Profile",
     icon: AccountCircleIcon,
     hrefLink: "/profile",
-  },
-
-  {
-    id: 12,
-    title: "Log Out",
-    icon: LogoutIcon,
-    hrefLink: "/logOut",
   },
 ];
 
@@ -356,5 +348,40 @@ export const loginFormInputs = [
     name: "password",
     type: "password",
     placeholder: "Enter Your Password",
+  },
+];
+
+export const homeTableHead = [
+  {
+    id: 1,
+    title: "Tracking ID",
+  },
+
+  {
+    id: 2,
+    title: "Product",
+  },
+
+  {
+    id: 3,
+    title: "Customer",
+  },
+  {
+    id: 4,
+    title: "Date",
+  },
+
+  {
+    id: 5,
+    title: "Amount",
+  },
+
+  {
+    id: 6,
+    title: "Payment Method",
+  },
+  {
+    id: 7,
+    title: "  Amoun",
   },
 ];

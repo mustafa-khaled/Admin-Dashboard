@@ -5,6 +5,7 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import AppLayout from "./ui/AppLayout";
 import UsersList from "./features/users/UsersList";
 import User from "./features/users/User";
+import ProductsList from "./features/products/ProductsList";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="Home" element={<Home />} />
             <Route path="users" element={<UsersList />} />
             <Route path="users/:userId" element={<User />} />
+            <Route path="products" element={<ProductsList />} />
           </Route>
 
           <Route path="login" element={<Login />} />

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/features/authSlice";
-import Button from "../../ui/Button";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function UserInfo() {
   const dispatch = useDispatch();
@@ -10,7 +10,12 @@ function UserInfo() {
   return (
     <div className="bg-colorGrey2 p-[20px] text-center">
       <h1 className="text-2xl mb-[20px]">{userInfo}</h1>
-      <Button onClick={() => dispatch(logoutUser())}>Log Out</Button>
+      <div
+        className="text-textColor cursor-pointer bg-colorBrand p-[5px]"
+        onClick={() => dispatch(logoutUser())}>
+        <LogoutIcon />
+        Log Out
+      </div>
     </div>
   );
 }

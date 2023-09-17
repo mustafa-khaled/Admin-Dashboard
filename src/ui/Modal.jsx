@@ -30,7 +30,7 @@ function Window({ children, name }) {
   if (name !== openName) return null;
 
   return createPortal(
-    <div className="fixed top-0 left-0 w-full h-fullz-20 ">
+    <div className="fixed top-0 left-0 w-full h-full z-20 ">
       <div
         className="fixed top-[50%] left-[50%] bg-colorGrey2 rounded-lg  w-[600px]  z-30 
     p-[20px] translate-y-[-50%] translate-x-[-50%] h-[80vh] overflow-auto"

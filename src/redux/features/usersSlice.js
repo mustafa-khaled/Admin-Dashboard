@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { onSnapshot, collection } from "firebase/firestore";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../firebase";
-import { deleteUser } from "./deleteUser";
+import { deleteDoc, doc } from "firebase/firestore";
 
 const initialState = [];
 
@@ -25,6 +26,15 @@ export const fetchUsers = () => {
     });
   };
 };
+
+export const deleteUser = createAsyncThunk("users/deleteUser", async (id) => {
+  try {
+    await deleteDoc(doc(db, "users", id));
+    return id;
+  } catch (error) {
+    throw error;
+  }
+});
 
 const usersSlice = createSlice({
   name: "users",

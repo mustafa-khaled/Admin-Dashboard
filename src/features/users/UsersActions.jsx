@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteUser } from "../../redux/features/deleteUser";
+import { deleteUser } from "../../redux/features/usersSlice";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DeleteIcon from "@mui/icons-material/Delete";
 

@@ -1,5 +1,5 @@
 import Modal from "../../ui/Modal";
-import CreateUserForm from "./CreateUserForm";
+import CreateEditUserForm from "./CreateEditUserForm";
 
 function AddEditUser({ children, userToEdit }) {
   return (
@@ -8,7 +8,7 @@ function AddEditUser({ children, userToEdit }) {
         <Modal.Open opens="userForm">{children}</Modal.Open>
 
         <Modal.Window name="userForm">
-          <CreateUserForm userToEdit={userToEdit} />
+          <CreateEditUserForm userToEdit={userToEdit} />
         </Modal.Window>
       </Modal>
     </div>
