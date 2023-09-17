@@ -18,35 +18,40 @@ const initialValues = {
   error: "",
 };
 
-function CreateUserForm({ userToEdit }) {
+function CreateUserForm({ userToEdit, onCloseModal }) {
   const [values, setValues] = useState(userToEdit || initialValues);
   const { email, password, error } = values;
   const [file, setFile] = useState("");
   const [per, setPer] = useState(null);
 
   const isEditSession = !!userToEdit;
-
   const handleAdd = async (e) => {
     e.preventDefault();
 
     if (!email || !password) return;
 
     try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "users", res.user.uid), {
-        ...values,
-        timeStamp: serverTimestamp(),
-      });
+      let userDocRef;
+
+      if (isEditSession) {
+        // Update the existing user
+        userDocRef = doc(db, "users", userToEdit.id);
+        await setDoc(userDocRef, { ...values, timeStamp: serverTimestamp() });
+      } else {
+        // Create a new user
+        const res = await createUserWithEmailAndPassword(auth, email, password);
+        userDocRef = doc(db, "users", res.user.uid);
+        await setDoc(userDocRef, { ...values, timeStamp: serverTimestamp() });
+      }
+
+      // Reset the form and file after successful operation
       setValues(initialValues);
       setFile("");
     } catch (err) {
       setValues({ ...values, error: err.message });
+    } finally {
+      onCloseModal?.();
     }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
   };
 
   return (
@@ -56,7 +61,8 @@ function CreateUserForm({ userToEdit }) {
           src={
             file
               ? URL.createObjectURL(file)
-              : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              : userToEdit?.img ||
+                "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
           }
           alt=""
           className="w-[100px] rounded-full object-cover mx-auto"
