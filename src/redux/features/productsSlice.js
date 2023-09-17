@@ -1,50 +1,5 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import { collection, onSnapshot } from "firebase/firestore";
-// import { db } from "../../firebase";
-
-// const initialState = {
-//   products: [],
-//   loading: false,
-//   error: null,
-// };
-
-// export const fetchProducts = () => {
-//   return (dispatch) => {
-//     const productsCollection = collection(db, "products");
-
-//     // Set up a real-time listener using onSnapshot
-//     onSnapshot(productsCollection, (querySnapshot) => {
-//       const products = [];
-
-//       querySnapshot.forEach((doc) => {
-//         const product = { id: doc.id, ...doc.data() };
-//         // Convert Firestore Timestamp to a serializable format (string)
-//         product.timeStamp = product.timeStamp?.toDate()?.toISOString();
-//         products.push(product);
-//       });
-
-//       // Dispatch the updated users to the Redux store
-//       dispatch(productsFetched(products));
-//     });
-//   };
-// };
-
-// const productsSlice = createSlice({
-//   name: "products",
-//   initialState,
-
-//   reducers: {
-//     productsFetched: (state, action) => {
-//       state.products = action.payload; // Update products in the state
-//     },
-//   },
-// });
-
-// export const { productsFetched } = productsSlice.actions;
-// export default productsSlice.reducer;
-
-import { createSlice } from "@reduxjs/toolkit";
-import { collection, onSnapshot } from "firebase/firestore";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const initialState = {
@@ -66,14 +21,14 @@ const productsSlice = createSlice({
     // Action to handle successful product fetching
     productsFetched: (state, action) => {
       state.products = action.payload;
-      state.loading = false; // Set loading to false after successful fetch
-      state.error = null; // Clear any previous error
+      state.loading = false;
+      state.error = null;
     },
 
     // Action to handle errors
     setError: (state, action) => {
       state.error = action.payload;
-      state.loading = false; // Set loading to false on error
+      state.loading = false;
     },
   },
 });
@@ -83,7 +38,8 @@ export default productsSlice.reducer;
 
 export const fetchProducts = () => {
   return (dispatch) => {
-    dispatch(setLoading(true)); // Set loading to true when fetching starts
+    // Set loading to true when fetching starts
+    dispatch(setLoading(true));
 
     const productsCollection = collection(db, "products");
 
@@ -98,11 +54,23 @@ export const fetchProducts = () => {
           products.push(product);
         });
 
-        dispatch(productsFetched(products)); // Dispatch products on successful fetch
+        dispatch(productsFetched(products));
       },
       (error) => {
-        dispatch(setError(error.message)); // Dispatch error on fetch failure
+        dispatch(setError(error.message));
       }
     );
   };
 };
+
+export const deleteProduct = createAsyncThunk(
+  "products/deleteProduct",
+  async (id) => {
+    try {
+      await deleteDoc(doc(db, "products", id));
+      return id;
+    } catch (error) {
+      throw error;
+    }
+  }
+);

@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../../redux/features/productsSlice";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import Product from "./Product";
 import Loader from "../../ui/Loader";
 import Empty from "../../ui/Empty";
+import AddEditProduct from "./AddEditProduct";
 
 function ProductsList() {
   const dispatch = useDispatch();
@@ -17,11 +19,18 @@ function ProductsList() {
   if (error) return <Empty content={error} />;
 
   return (
-    <div className="p-[20px] grid gap-[10px] grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
-      {products.length > 0 &&
-        products.map((product) => {
-          return <Product key={product.id} product={product} />;
-        })}
+    <div className="p-[20px]">
+      <AddEditProduct>
+        <div className="mb-[20px] text-right text-colorBrand">
+          <AddBoxIcon className="cursor-pointer" />
+        </div>
+      </AddEditProduct>
+      <div className="grid gap-[10px] grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
+        {products.length > 0 &&
+          products.map((product) => {
+            return <Product key={product.id} product={product} />;
+          })}
+      </div>
     </div>
   );
 }

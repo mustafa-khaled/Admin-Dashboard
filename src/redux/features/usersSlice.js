@@ -4,7 +4,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 
-const initialState = [];
+const initialState = {
+  users: [],
+  loading: false,
+  error: null,
+};
 
 export const fetchUsers = () => {
   return (dispatch) => {
@@ -39,9 +43,10 @@ export const deleteUser = createAsyncThunk("users/deleteUser", async (id) => {
 const usersSlice = createSlice({
   name: "users",
   initialState,
+
   reducers: {
     usersFetched: (state, action) => {
-      return action.payload;
+      state.users = action.payload;
     },
   },
   extraReducers: (builder) => {

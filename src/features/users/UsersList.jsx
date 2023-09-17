@@ -5,14 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../redux/features/usersSlice";
 import AddEditUser from "./AddEditUser";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import Loader from "../../ui/Loader";
+import Empty from "../../ui/Empty";
 
 function UsersList() {
-  const users = useSelector((state) => state.users);
+  const { users, loading, error } = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  if (loading) return <Loader />;
+  if (error) {
+    console.log(error);
+    return <Empty content={error} />;
+  }
 
   return (
     <div className="p-[20px] text-textColor">

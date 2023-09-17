@@ -119,3 +119,7 @@ body {
 *::-webkit-scrollbar-thumb:active {
   background-color: var(--color-brand-900);
 }
+
+.product:hover .product-operations {
+  display: flex;
+}

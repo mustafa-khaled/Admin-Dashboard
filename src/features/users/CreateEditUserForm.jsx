@@ -64,8 +64,7 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
           src={
             file
               ? URL.createObjectURL(file)
-              : userToEdit?.img ||
-                "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
           }
           alt=""
           className="w-[100px] rounded-full object-cover mx-auto"

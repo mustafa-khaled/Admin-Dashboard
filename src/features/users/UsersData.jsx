@@ -12,10 +12,10 @@ export const userColumns = [
         <div className="flex items-center gap-[10px] ">
           <img
             className="w-[32px] h-[32px]"
-            src={params.row.img}
+            src={params?.row?.img}
             alt="avatar"
           />
-          {params.row.username}
+          {params?.row?.username}
         </div>
       );
     },
