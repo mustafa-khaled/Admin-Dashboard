@@ -12,6 +12,8 @@ const initialValues = {
   status: "",
 };
 
+const uniqueProductId = new Date().getTime().toString();
+
 function CreateEditProductForm({ productToEdit, onCloseModal }) {
   const [values, setValues] = useState(productToEdit || initialValues);
   const { title, price, status } = values;
@@ -19,6 +21,7 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
   const [per, setPer] = useState(null);
 
   const isEditSession = !!productToEdit;
+
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -29,17 +32,15 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
 
       if (isEditSession) {
         // Update the existing product
-        productDocRef = doc(db, "products", productToEdit.id || 578);
-
+        productDocRef = doc(db, "products", productToEdit.id);
         await setDoc(productDocRef, {
           ...values,
           timestamp: serverTimestamp(),
         });
       } else {
         // Create a new product
-        productDocRef = doc(db, "products");
-
-        await setDoc(productDocRef, {
+        const newProductRef = doc(db, "products", uniqueProductId);
+        await setDoc(newProductRef, {
           ...values,
           timestamp: serverTimestamp(),
         });

@@ -5,12 +5,6 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import StoreIcon from "@mui/icons-material/Store";
 import BackupTableIcon from "@mui/icons-material/BackupTable";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
-import PsychologyIcon from "@mui/icons-material/Psychology";
-import SettingsIcon from "@mui/icons-material/Settings";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // Widget Icons
 import PersonIcon from "@mui/icons-material/Person";
@@ -49,50 +43,9 @@ export const sideBarLinks = [
 
   {
     id: 5,
-    title: "Delivery",
-    icon: LocalShippingIcon,
-    hrefLink: "/delivery",
-  },
-
-  {
-    id: 6,
     title: "Stats",
     icon: QueryStatsIcon,
     hrefLink: "/stats",
-  },
-
-  {
-    id: 7,
-    title: "Notifications",
-    icon: NotificationsIcon,
-    hrefLink: "/notifications",
-  },
-
-  {
-    id: 8,
-    title: "System Health",
-    icon: HealthAndSafetyIcon,
-    hrefLink: "/systemHealth",
-  },
-  {
-    id: 9,
-    title: "Logs",
-    icon: PsychologyIcon,
-    hrefLink: "/logs",
-  },
-
-  {
-    id: 10,
-    title: "Settings",
-    icon: SettingsIcon,
-    hrefLink: "/settings",
-  },
-
-  {
-    id: 11,
-    title: "Profile",
-    icon: AccountCircleIcon,
-    hrefLink: "/profile",
   },
 ];
 

@@ -50,7 +50,7 @@ export const fetchProducts = () => {
 
         querySnapshot.forEach((doc) => {
           const product = { id: doc.id, ...doc.data() };
-          product.timeStamp = product.timeStamp?.toDate()?.toISOString();
+          product.timestamp = product?.timestamp?.toDate()?.toISOString();
           products.push(product);
         });
 
