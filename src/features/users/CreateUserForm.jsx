@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
@@ -24,8 +23,6 @@ function CreateUserForm({ inputs }) {
   const [file, setFile] = useState("");
   const [per, setPer] = useState(null);
 
-  const navigate = useNavigate();
-
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -39,7 +36,6 @@ function CreateUserForm({ inputs }) {
       });
       setValues(initialValues);
       setFile("");
-      navigate(-1);
     } catch (err) {
       setValues({ ...values, error: err.message });
     }

@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { loginFormInputs } from "../../data/data";
-import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/features/authSlice";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import { loginFormInputs } from "../../data/data";
 import Form from "../../ui/Form";
 
-// mustafa@user.com
 const initialFormValues = {
   email: "",
   password: "",
@@ -27,7 +26,7 @@ function LoginForm() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        dispatch(loginUser(user));
+        dispatch(loginUser(user.providerData));
         navigate("/");
       })
       .catch((error) => {

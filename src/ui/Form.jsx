@@ -29,7 +29,7 @@ function Form({
               placeholder={input.placeholder}
               value={values[input.name]}
               onChange={onChange}
-              className="w-full border-b border-gray-300 outline-none p-[5px] bg-transparent"
+              className="w-full border-b text-textColor border-gray-300 outline-none p-[5px] bg-transparent"
             />
           </div>
         );
