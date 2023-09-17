@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import Chart from "../../components/charts/Chart";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import AddEditUser from "./AddEditUser";
 
 function User() {
   const [userData, setUserData] = useState(null);
@@ -11,13 +12,18 @@ function User() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const docRef = doc(db, "users", userId);
-      const docSnap = await getDoc(docRef);
+      try {
+        const docRef = doc(db, "users", userId);
+        const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        setUserData(docSnap.data());
-      } else {
-        console.log("No such document!");
+        if (docSnap.exists()) {
+          const user = { id: docSnap.id, ...docSnap.data() };
+          setUserData(user);
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
       }
     };
     fetchUser();
@@ -25,15 +31,18 @@ function User() {
 
   return (
     <div className="p-[20px] flex gap-[20px] text-textColor">
-      <div className="flex-[1]  p-[20px] shadow-md relative bg-colorGrey2">
+      <div className="flex-[1] p-[20px] shadow-md relative bg-colorGrey2">
         <div className="absolute right-[20px] top-[10px] cursor-pointer bg-colorBrand hover:bg-hoverBrand p-[3px] rounded-md">
-          <BorderColorIcon className=" text-colorGrey" />
+          {/* Pass the userData to userToEdit */}
+          <AddEditUser userToEdit={userData}>
+            <BorderColorIcon className="text-colorGrey" />
+          </AddEditUser>
         </div>
-        <h1 className="mb-[20px] text-lg ">Information</h1>
+        <h1 className="mb-[20px] text-lg">Information</h1>
         <div className="flex  gap-[20px]">
           <img
-            src="https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
+            src={userData?.img || "/default-user.jpg"}
+            alt="User Avatar"
             className="w-[100px] h-[100px] rounded-full object-cover"
           />
           <div>
@@ -62,7 +71,7 @@ function User() {
           </div>
         </div>
       </div>
-      <div className="flex-[2]  shadow-md">
+      <div className="flex-[2]  shadow-md ">
         <Chart aspect={3 / 1} title="User Spending (Last 6 Month)" />
       </div>
     </div>

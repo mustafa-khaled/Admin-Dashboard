@@ -3,7 +3,8 @@ import { userColumns, actionColumn } from "./UsersData";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../redux/features/usersSlice";
-import AddNewUser from "./AddNewUser";
+import AddEditUser from "./AddEditUser";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 function UsersList() {
   const users = useSelector((state) => state.users);
@@ -17,7 +18,9 @@ function UsersList() {
     <div className="p-[20px] text-textColor">
       <div className=" flex items-center justify-between gap-[10px] my-[10px]">
         <h1 className="p-[5px]">Users:</h1>
-        <AddNewUser />
+        <AddEditUser>
+          <PersonAddIcon className="text-colorBrand cursor-pointer" />
+        </AddEditUser>
       </div>
 
       <DataGrid
