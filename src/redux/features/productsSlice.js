@@ -62,7 +62,7 @@ export const fetchProducts = () => {
     );
   };
 };
-
+// Delete Product
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (id) => {

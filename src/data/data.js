@@ -303,33 +303,20 @@ export const newProductFormInputs = [
     placeholder: "Apple Macbook Pro",
     name: "title",
   },
+
   {
     id: 2,
-    label: "Description",
-    type: "text",
-    placeholder: "Description",
-    name: "description",
-  },
-  {
-    id: 3,
-    label: "Category",
-    type: "text",
-    placeholder: "Computers",
-    name: "category",
-  },
-  {
-    id: 4,
     label: "Price",
-    type: "text",
-    placeholder: "100",
+    type: "number",
+    placeholder: "$100",
     name: "price",
   },
   {
-    id: 5,
-    label: "Stock",
+    id: 3,
+    label: "Status",
     type: "text",
-    placeholder: "in stock",
-    name: "stock",
+    placeholder: "Active",
+    name: "status",
   },
 ];
 
