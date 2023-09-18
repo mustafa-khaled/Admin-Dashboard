@@ -35,8 +35,12 @@ function OrdersList() {
                 <tr key={item.id}>
                   <td className="px-2 py-[20px] border border-borderColor">
                     <div className="flex items-center gap-[10px] text-sm">
-                      img
-                      <h3>Product Name</h3>
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-[30px]"
+                      />
+                      <h3>{item.title}</h3>
                     </div>
                   </td>
                   <td className="px-4 py-[20px] border border-borderColor">

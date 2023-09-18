@@ -42,11 +42,6 @@ export const fetchOrders = () => {
         querySnapshot.forEach((doc) => {
           const orderData = doc.data();
 
-          // Extract necessary information from the product reference
-          const productData = {
-            id: orderData.product.id,
-          };
-
           const formattedDate = orderData.date
             ?.toDate()
             ?.toLocaleDateString("en-US", {
@@ -57,7 +52,8 @@ export const fetchOrders = () => {
 
           const order = {
             id: doc.id,
-            product: productData,
+            img: orderData.img,
+            title: orderData.title,
             customer: orderData.customer,
             method: orderData.method,
             status: orderData.status,
