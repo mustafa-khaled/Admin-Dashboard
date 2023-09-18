@@ -19,8 +19,8 @@ function App() {
                 <AppLayout />
               </ProtectedRoute>
             }>
-            <Route index element={<Home replace to="Home" />} />
-            <Route path="Home" element={<Home />} />
+            <Route index element={<Home replace to="home" />} />
+            <Route path="home" element={<Home />} />
             <Route path="users" element={<UsersList />} />
             <Route path="users/:userId" element={<User />} />
             <Route path="products" element={<ProductsList />} />

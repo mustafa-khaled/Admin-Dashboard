@@ -8,8 +8,8 @@ import { loginFormInputs } from "../../data/data";
 import Form from "../../ui/Form";
 
 const initialFormValues = {
-  email: "",
-  password: "",
+  email: "user@fake.com",
+  password: "123456789",
   error: false,
 };
 

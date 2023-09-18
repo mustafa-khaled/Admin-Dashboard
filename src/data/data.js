@@ -44,41 +44,46 @@ export const widgetData = [
   {
     id: 1,
     title: "Users",
-    counter: 100,
     link: "See All Users",
-    percentage: "20%",
+    category: "users",
+    amountProp: "usersAmount",
+    percentageProp: "usersPercentage",
     icon: PersonIcon,
     styles: {
       bg: "bg-red-200",
       text: "text-red-500",
     },
+    to: "/users",
   },
 
   {
     id: 2,
     title: "Orders",
-    counter: 100,
     link: "View All Orders",
-    percentage: "20%",
+    category: "orders",
+    amountProp: "ordersAmount",
+    percentageProp: "ordersPercentage",
     icon: ShoppingCartIcon,
-
     styles: {
       bg: "bg-yellow-200",
       text: "text-yellow-500",
     },
+    to: "/orders",
   },
 
   {
     id: 3,
     title: "Earning",
-    counter: 3213,
     link: "View Net Earning",
-    percentage: "20%",
+    category: "products",
+    amountProp: "productsAmount",
+    percentageProp: "productsPercentage",
     icon: CurrencyExchangeIcon,
     styles: {
       bg: "bg-green-200",
       text: "text-green-500",
     },
+    to: "/orders",
   },
 ];
 

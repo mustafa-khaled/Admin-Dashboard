@@ -1,50 +1,41 @@
-import { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { widgetData } from "../../data/data";
-import { db } from "../../firebase";
+import { fetchWidgetDataAsync } from "../../redux/features/widgetsSlice";
 import Widget from "./Widget";
+import Loader from "../../ui/Loader";
+import Empty from "../../ui/Loader";
 
 function WidgetList() {
-  const [amount, setAmount] = useState(null);
-  const [diff, setDiff] = useState(null);
+  const dispatch = useDispatch();
+  const { amount, percentage, loading, error } = useSelector(
+    (state) => state.widgets
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      const today = new Date();
-      const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-      const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+    dispatch(fetchWidgetDataAsync("users", "timeStamp"));
+    // dispatch(fetchWidgetDataAsync("orders", "date"));
+    // dispatch(fetchWidgetDataAsync("products", "timestamp"));
+  }, [dispatch]);
 
-      const lastMonthQuery = query(
-        collection(db, "users"),
-        where("timeStamp", "<=", today),
-        where("timeStamp", ">", lastMonth)
-      );
+  if (loading) {
+    return <Loader />;
+  }
 
-      const prevMonthQuery = query(
-        collection(db, "users"),
-        where("timeStamp", "<=", lastMonth),
-        where("timeStamp", ">", prevMonth)
-      );
-
-      const lastMonthData = await getDocs(lastMonthQuery);
-      const prevMonthData = await getDocs(prevMonthQuery);
-
-      setAmount(lastMonthData.docs.length);
-      setDiff(
-        ((lastMonthData.docs.length - prevMonthData.docs.length) /
-          prevMonthData.docs.length) *
-          100
-      );
-    };
-
-    fetchData();
-  }, []);
+  if (error) {
+    return <Empty content={error} />;
+  }
 
   return (
     <div className=" p-[20px] grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] text-textColor">
-      {widgetData.map((widget) => {
-        return <Widget key={widget.id} widget={widget} />;
-      })}
+      {widgetData.map((widget) => (
+        <Widget
+          key={widget.id}
+          widget={widget}
+          amount={amount}
+          percentage={percentage}
+        />
+      ))}
     </div>
   );
 }
