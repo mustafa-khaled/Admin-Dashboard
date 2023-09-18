@@ -1,6 +1,21 @@
-import { homeTableData, homeTableHead } from "../../data/data";
+import { useDispatch, useSelector } from "react-redux";
+import { homeTableHead } from "../../data/data";
+import { useEffect } from "react";
+import { fetchOrders } from "../../redux/features/ordersSlice";
+import Loader from "../../ui/Loader";
+import Empty from "../../ui/Empty";
 
 function OrdersList() {
+  const { orders, loading, error } = useSelector((state) => state.orders);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, [dispatch]);
+
+  if (loading) return <Loader />;
+  if (error) return <Empty content={error} />;
+
   return (
     <section className="container mx-auto p-6 font-mono">
       <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -16,23 +31,19 @@ function OrdersList() {
               </tr>
             </thead>
             <tbody className="bg-colorGrey2 text-textColor">
-              {homeTableData.map((item) => (
+              {orders.map((item) => (
                 <tr key={item.id}>
                   <td className="px-2 py-[20px] border border-borderColor">
                     <div className="flex items-center gap-[10px] text-sm">
-                      <img
-                        src={item.img}
-                        alt={item.product}
-                        className="w-[20px]"
-                      />
-                      <h3>{item.product}</h3>
+                      img
+                      <h3>Product Name</h3>
                     </div>
                   </td>
                   <td className="px-4 py-[20px] border border-borderColor">
                     {item.customer}
                   </td>
                   <td className="px-4 py-[20px] border border-borderColor">
-                    "time"
+                    {item.date}
                   </td>
                   <td className="px-4 py-[20px] border border-borderColor">
                     {item.method}
