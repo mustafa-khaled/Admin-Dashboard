@@ -6,7 +6,7 @@ import { featuredChartData } from "../../data/data";
 
 function FeaturedChart() {
   return (
-    <div className=" shadow-md flex-[2] p-[10px] bg-colorGrey2 text-textColor">
+    <div className=" shadow-md  p-[10px] bg-colorGrey2 text-textColor">
       <div className="flex items-center justify-between ">
         <h1>Total Revenue</h1>
         <MoreVertIcon

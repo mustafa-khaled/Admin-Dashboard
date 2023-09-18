@@ -11,7 +11,7 @@ function UserInfo() {
     <div className="bg-colorGrey2 p-[20px] text-center">
       <h1 className="text-2xl mb-[20px]">{userInfo}</h1>
       <div
-        className="text-textColor cursor-pointer bg-colorBrand p-[5px]"
+        className="text-textColor cursor-pointer flex items-center gap-[10px] justify-center bg-colorBrand p-[5px]"
         onClick={() => dispatch(logoutUser())}>
         <LogoutIcon />
         Log Out

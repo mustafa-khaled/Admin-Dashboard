@@ -6,6 +6,7 @@ import AppLayout from "./ui/AppLayout";
 import UsersList from "./features/users/UsersList";
 import User from "./features/users/User";
 import ProductsList from "./features/products/ProductsList";
+import OrdersList from "./features/orders/OrdersList";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="users" element={<UsersList />} />
             <Route path="users/:userId" element={<User />} />
             <Route path="products" element={<ProductsList />} />
+            <Route path="orders" element={<OrdersList />} />
           </Route>
 
           <Route path="login" element={<Login />} />

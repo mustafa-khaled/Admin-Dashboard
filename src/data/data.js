@@ -10,7 +10,6 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
 export const sideBarLinks = [
   {
@@ -87,20 +86,6 @@ export const widgetData = [
     styles: {
       bg: "bg-green-200",
       text: "text-green-500",
-    },
-  },
-
-  {
-    id: 4,
-    title: "Balance",
-    counter: 3213,
-    link: "See Details",
-    percentage: "20%",
-    icon: AccountBalanceWalletIcon,
-
-    styles: {
-      bg: "bg-purple-200",
-      text: "text-purple-500",
     },
   },
 ];
@@ -293,11 +278,6 @@ export const loginFormInputs = [
 
 export const homeTableHead = [
   {
-    id: 1,
-    title: "Tracking ID",
-  },
-
-  {
     id: 2,
     title: "Product",
   },
@@ -312,16 +292,11 @@ export const homeTableHead = [
   },
 
   {
-    id: 5,
-    title: "Amount",
-  },
-
-  {
     id: 6,
     title: "Payment Method",
   },
   {
     id: 7,
-    title: "  Amoun",
+    title: "Status",
   },
 ];

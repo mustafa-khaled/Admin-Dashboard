@@ -41,7 +41,7 @@ function WidgetList() {
   }, []);
 
   return (
-    <div className=" p-[20px] flex items-center gap-[20px] text-textColor">
+    <div className=" p-[20px] grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] text-textColor">
       {widgetData.map((widget) => {
         return <Widget key={widget.id} widget={widget} />;
       })}
