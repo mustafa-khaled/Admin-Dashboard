@@ -1,9 +1,16 @@
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 import Logo from "./Logo";
 import SideBarLinks from "./SideBarLinks";
 
-function SideBar() {
+function SideBar({ showSidebar, setShowSidebar }) {
+  const sidebarRef = useOutsideClick(() => setShowSidebar(false));
+
   return (
-    <div className=" flex-[1] border-r border-borderColor min-h-[100vh] bg-colorGrey2">
+    <div
+      ref={sidebarRef}
+      className={`fixed transition-right duration-300 ease-out ${
+        showSidebar ? "left-0" : "left-[-300px]"
+      } top-[60px] w-[250px] z-40 border-r border-borderColor min-h-[90vh] bg-colorGrey2`}>
       <Logo />
       <SideBarLinks />
     </div>

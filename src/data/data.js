@@ -1,4 +1,7 @@
 // Static Data
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
 // Side Bar Icons
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
@@ -93,20 +96,23 @@ export const featuredChartData = [
     title: "Target",
     value: "$12.4k",
     styles: "text-red-500",
+    icon: KeyboardArrowDownIcon,
   },
 
   {
     id: 2,
     title: "Last Week",
-    value: "$12.4k",
+    value: "$22.9k",
     styles: "text-green-500",
+    icon: KeyboardArrowUpIcon,
   },
 
   {
     id: 3,
     title: "Last Month",
-    value: "$12.4k",
+    value: "$34.1k",
     styles: "text-green-500",
+    icon: KeyboardArrowUpIcon,
   },
 ];
 

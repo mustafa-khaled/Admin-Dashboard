@@ -17,7 +17,12 @@ function OrdersList() {
   if (loading) return <Loader />;
   if (error) return <Empty content={error} />;
 
-  return <Table tableHead={homeTableHead} tableBodyData={orders} />;
+  return (
+    <div className="p-[20px]  m-[20px] shadow-md bg-colorGrey2 text-textColor">
+      <div className="mb-[20px]">Latest Transactions</div>
+      <Table tableHead={homeTableHead} tableBodyData={orders} />
+    </div>
+  );
 }
 
 export default OrdersList;
