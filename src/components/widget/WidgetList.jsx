@@ -1,41 +1,64 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { widgetData } from "../../data/data";
-import { fetchWidgetDataAsync } from "../../redux/features/widgetsSlice";
+import { fetchWidgetData } from "./getWidgetData";
 import Widget from "./Widget";
-import Loader from "../../ui/Loader";
-import Empty from "../../ui/Loader";
+import SmallLoader from "../../ui/SmallLoader";
 
 function WidgetList() {
-  const dispatch = useDispatch();
-  const { amount, percentage, loading, error } = useSelector(
-    (state) => state.widgets
-  );
+  const [loading, setLoading] = useState(true);
+  const [userData, setUserData] = useState(null);
+  const [productData, setProductData] = useState(null);
+  const [orderData, setOrderData] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchWidgetDataAsync("users", "timeStamp"));
-    // dispatch(fetchWidgetDataAsync("orders", "date"));
-    // dispatch(fetchWidgetDataAsync("products", "timestamp"));
-  }, [dispatch]);
+    const fetchDataAsync = async () => {
+      try {
+        const userResult = await fetchWidgetData("users", "timeStamp");
+        setUserData(userResult);
 
-  if (loading) {
-    return <Loader />;
-  }
+        const productResult = await fetchWidgetData("products", "timestamp");
+        setProductData(productResult);
 
-  if (error) {
-    return <Empty content={error} />;
-  }
+        const orderResult = await fetchWidgetData("orders", "date");
+        setOrderData(orderResult);
+
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchDataAsync();
+  }, []);
+
+  if (loading) return <SmallLoader />;
 
   return (
-    <div className=" p-[20px] grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] text-textColor">
-      {widgetData.map((widget) => (
-        <Widget
-          key={widget.id}
-          widget={widget}
-          amount={amount}
-          percentage={percentage}
-        />
-      ))}
+    <div className="p-[20px] grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] text-textColor">
+      {widgetData.map((widget, index) => {
+        let amount, percentage;
+
+        if (index === 0) {
+          amount = userData?.amount;
+          percentage = userData?.percentage;
+        } else if (index === 1) {
+          amount = productData?.amount;
+          percentage = productData?.percentage;
+        } else if (index === 2) {
+          amount = orderData?.amount;
+          percentage = orderData?.percentage;
+        }
+
+        return (
+          <Widget
+            key={widget.id}
+            widget={widget}
+            amount={amount}
+            percentage={percentage}
+          />
+        );
+      })}
     </div>
   );
 }
