@@ -3,12 +3,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../redux/features/productsSlice";
 import AddEditProduct from "./AddEditProduct";
+import { toast } from "react-toastify";
 
 function ProductActions({ product }) {
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
+    toast.success("Product Successfully Deleted !");
   };
 
   return (

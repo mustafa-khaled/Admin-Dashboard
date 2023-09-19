@@ -7,7 +7,7 @@ function AppLayout() {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div>
+    <div className="max-w-[1500px] mx-auto">
       <SideBar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <main className="min-h-[calc(100vh-60px)] mt-[60px]">

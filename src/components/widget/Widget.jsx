@@ -16,7 +16,7 @@ function Widget({ widget, amount, percentage }) {
       <div className="flex flex-col justify-between ">
         <div className=" flex items-start text-green-400">
           <KeyboardArrowUpIcon />
-          {percentage}
+          {percentage}%
         </div>
         <div className={`font self-end p-[5px] rounded-md ${widget.styles.bg}`}>
           <IconComponent className={widget.styles.text} />

@@ -18,9 +18,11 @@ function OrdersList() {
   if (error) return <Empty content={error} />;
 
   return (
-    <div className="p-[20px]  m-[20px] shadow-md bg-colorGrey2 text-textColor">
-      <div className="mb-[20px]">Latest Transactions</div>
-      <Table tableHead={homeTableHead} tableBodyData={orders} />
+    <div className="flex items-center justify-center min-h-[calc(100vh-60px)]">
+      <div className=" p-[20px] w-[90%] shadow-md bg-colorGrey2 text-textColor">
+        <div className="mb-[20px]">Latest Transactions</div>
+        <Table tableHead={homeTableHead} tableBodyData={orders} />
+      </div>
     </div>
   );
 }

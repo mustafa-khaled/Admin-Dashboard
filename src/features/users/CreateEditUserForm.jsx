@@ -3,9 +3,10 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { newUserFormInputs } from "../../data/data";
+import { toast } from "react-toastify";
 
 import Form from "../../ui/Form";
-import UploadImage from "../../components/UploadImage";
+import UploadImage from "../../ui/UploadImage";
 
 const initialValues = {
   userName: "",
@@ -40,11 +41,13 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
           ...values,
           timeStamp: serverTimestamp(),
         });
+        toast.success("User Successfully Edited !");
       } else {
         // Create a new user
         const res = await createUserWithEmailAndPassword(auth, email, password);
         userDocRef = doc(db, "users", res.user.uid);
         await setDoc(userDocRef, { ...values, timeStamp: serverTimestamp() });
+        toast.success("New User Successfully Created !");
       }
 
       // Reset the form and file after successful operation
@@ -52,6 +55,7 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
       setFile("");
     } catch (err) {
       setValues({ ...values, error: err.message });
+      toast.success(err.message);
     } finally {
       onCloseModal?.();
     }

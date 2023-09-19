@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../../redux/features/usersSlice";
+import { toast } from "react-toastify";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -10,10 +11,11 @@ const UsersActions = ({ id }) => {
   const handleDelete = () => {
     dispatch(deleteUser(id))
       .then(() => {
-        console.log("User deleted successfully!");
+        toast.success("User Successfully Deleted !");
       })
       .catch((error) => {
         console.error("Error deleting user:", error);
+        toast.error(error);
       });
   };
 

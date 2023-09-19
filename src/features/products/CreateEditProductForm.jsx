@@ -2,9 +2,10 @@ import { useState } from "react";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { newProductFormInputs } from "../../data/data";
+import { toast } from "react-toastify";
 
 import Form from "../../ui/Form";
-import UploadImage from "../../components/UploadImage";
+import UploadImage from "../../ui/UploadImage";
 
 const initialValues = {
   title: "",
@@ -37,6 +38,7 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
           ...values,
           timestamp: serverTimestamp(),
         });
+        toast.success("Product Successfully Edited !");
       } else {
         // Create a new product
         const newProductRef = doc(db, "products", uniqueProductId);
@@ -44,6 +46,7 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
           ...values,
           timestamp: serverTimestamp(),
         });
+        toast.success("New Product Successfully Created !");
       }
 
       // Reset the form and file after successful operation
