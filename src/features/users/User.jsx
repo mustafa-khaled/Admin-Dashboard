@@ -5,9 +5,13 @@ import { db } from "../../firebase";
 import Chart from "../../components/charts/Chart";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import AddEditUser from "./AddEditUser";
+import Loader from "../../ui/Loader";
+import Empty from "../../ui/Empty";
 
 function User() {
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { userId } = useParams();
 
   useEffect(() => {
@@ -24,10 +28,22 @@ function User() {
         }
       } catch (error) {
         console.error("Error fetching user:", error);
+        setError("Error fetching user");
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchUser();
   }, [userId]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <Empty message={error} />;
+  }
 
   return (
     <div className="p-[20px] flex gap-[20px] text-textColor">

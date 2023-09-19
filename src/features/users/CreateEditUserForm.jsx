@@ -4,6 +4,7 @@ import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { newUserFormInputs } from "../../data/data";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import Form from "../../ui/Form";
 import UploadImage from "../../ui/UploadImage";
@@ -25,7 +26,10 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
   const [file, setFile] = useState("");
   const [per, setPer] = useState(null);
 
+  const navigate = useNavigate();
+
   const isEditSession = !!userToEdit;
+
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -41,7 +45,9 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
           ...values,
           timeStamp: serverTimestamp(),
         });
+
         toast.success("User Successfully Edited !");
+        navigate(-1);
       } else {
         // Create a new user
         const res = await createUserWithEmailAndPassword(auth, email, password);

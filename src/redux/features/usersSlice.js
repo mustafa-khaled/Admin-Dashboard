@@ -31,6 +31,8 @@ export const fetchUsers = () => {
   };
 };
 
+
+
 export const deleteUser = createAsyncThunk("users/deleteUser", async (id) => {
   try {
     await deleteDoc(doc(db, "users", id));
