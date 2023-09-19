@@ -12,21 +12,21 @@ const initialState = {
 
 export const fetchUsers = () => {
   return (dispatch) => {
+    dispatch(usersLoading(true));
+
     const usersCollection = collection(db, "users");
 
-    // Set up a real-time listener using onSnapshot
     onSnapshot(usersCollection, (querySnapshot) => {
       const users = [];
 
       querySnapshot.forEach((doc) => {
         const user = { id: doc.id, ...doc.data() };
-        // Convert Firestore Timestamp to a serializable format (string)
         user.timeStamp = user.timeStamp?.toDate()?.toISOString();
         users.push(user);
       });
 
-      // Dispatch the updated users to the Redux store
       dispatch(usersFetched(users));
+      dispatch(usersLoading(false));
     });
   };
 };
@@ -48,14 +48,27 @@ const usersSlice = createSlice({
     usersFetched: (state, action) => {
       state.users = action.payload;
     },
+    usersLoading: (state, action) => {
+      state.loading = action.payload;
+      state.error = null;
+    },
+    usersError: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
   },
 
   extraReducers: (builder) => {
     builder.addCase(deleteUser.fulfilled, (state, action) => {
       state.users = state.users.filter((user) => user.id !== action.payload);
     });
+
+    builder.addCase(deleteUser.rejected, (state, action) => {
+      state.error = action.error.message;
+      state.loading = false;
+    });
   },
 });
 
-export const { usersFetched } = usersSlice.actions;
+export const { usersFetched, usersLoading, usersError } = usersSlice.actions;
 export default usersSlice.reducer;

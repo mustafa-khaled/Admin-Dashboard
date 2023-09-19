@@ -17,15 +17,17 @@ function UsersList() {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  if (loading) return <Loader />;
+  if (loading) {
+    return <Loader />;
+  }
+
   if (error) {
-    console.log(error);
     return <Empty content={error} />;
   }
 
   return (
     <div className="p-[20px] text-textColor">
-      <div className=" flex items-center justify-between gap-[10px] my-[10px]">
+      <div className="flex items-center justify-between gap-[10px] my-[10px]">
         <h1 className="p-[5px]">Users:</h1>
         <AddEditUser>
           <PersonAddIcon className="text-colorBrand cursor-pointer" />
@@ -54,7 +56,6 @@ function UsersList() {
           "& .MuiDataGrid-columnHeaders ": {
             borderColor: "var(--color-grey-300)",
           },
-
           "& .MuiDataGrid-footerContainer": {
             borderColor: "var(--color-grey-300)",
           },
