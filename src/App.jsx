@@ -10,6 +10,7 @@ import UsersList from "./features/users/UsersList";
 import User from "./features/users/User";
 import ProductsList from "./features/products/ProductsList";
 import OrdersList from "./features/orders/OrdersList";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           </Route>
 
           <Route path="login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <ToastContainer
           autoClose={4000}
