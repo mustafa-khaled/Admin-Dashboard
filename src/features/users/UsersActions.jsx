@@ -4,6 +4,8 @@ import { deleteUser } from "../../redux/features/usersSlice";
 import { toast } from "react-toastify";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const UsersActions = ({ id }) => {
   const dispatch = useDispatch();
@@ -14,7 +16,6 @@ const UsersActions = ({ id }) => {
         toast.success("User Successfully Deleted !");
       })
       .catch((error) => {
-        console.error("Error deleting user:", error);
         toast.error(error);
       });
   };
@@ -26,9 +27,18 @@ const UsersActions = ({ id }) => {
           <RemoveRedEyeIcon />
         </div>
       </Link>
-      <div className="cursor-pointer" onClick={handleDelete}>
-        <DeleteIcon className="text-gray-600" />
-      </div>
+      {/* Delete User Confirm Message */}
+      <Modal>
+        <Modal.Open opens="userConfirm">
+          <div className="cursor-pointer">
+            <DeleteIcon className="text-gray-600" />
+          </div>
+        </Modal.Open>
+
+        <Modal.Window name="userConfirm">
+          <ConfirmDelete resource={`User`} onConfirm={handleDelete} />
+        </Modal.Window>
+      </Modal>
     </div>
   );
 };

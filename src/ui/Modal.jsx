@@ -32,8 +32,8 @@ function Window({ children, name }) {
   return createPortal(
     <div className="fixed top-0 left-0 w-full h-full z-20 ">
       <div
-        className="fixed top-[50%] left-[50%] bg-colorGrey2 rounded-lg  w-[600px]  z-30 
-    p-[20px] translate-y-[-50%] translate-x-[-50%] h-[80vh] overflow-auto"
+        className="z-50 fixed top-[50%] left-[50%] bg-colorGrey2 rounded-lg max-h-[80vh]  shadow-md w-[600px]  
+    p-[20px] translate-y-[-50%] translate-x-[-50%]  overflow-auto"
         ref={ref}>
         <button
           onClick={close}

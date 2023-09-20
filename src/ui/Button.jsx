@@ -1,12 +1,21 @@
-function Button({ children, styles, disable, type = "button", onClick }) {
+function Button({
+  children,
+  variation = "secondary",
+  styles,
+  disable,
+  type = "button",
+  onClick,
+}) {
   return (
     <button
       disabled={disable}
       type={type}
       onClick={onClick}
-      className={` ${styles} bg-colorBrand text-textColor p-[10px] rounded-lg font-semibold hover:bg-hoverBrand ${
-        disable ? "bg-hoverBrand" : ""
-      }`}>
+      className={` ${styles} ${
+        variation === "secondary"
+          ? "bg-colorBrand  hover:bg-hoverBrand "
+          : "bg-danger1 hover:bg-danger2"
+      } text-textColor p-[10px] rounded-lg font-semibold `}>
       {children}
     </button>
   );

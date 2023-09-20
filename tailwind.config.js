@@ -11,6 +11,8 @@ export default {
         hoverText: "var( --color-grey-400)",
         colorBrand: "var(--color-brand-600)",
         hoverBrand: "var(--color-brand-500)",
+        danger1: "var(--color-red-800)",
+        danger2: "var(--color-red-700)",
       },
     },
   },
