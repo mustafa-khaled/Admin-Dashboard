@@ -13,18 +13,17 @@ function WidgetList() {
   useEffect(() => {
     const fetchDataAsync = async () => {
       try {
-        const userResult = await fetchWidgetData("users", "timeStamp");
+        const userResult = await fetchWidgetData("users");
         setUserData(userResult);
 
-        const productResult = await fetchWidgetData("products", "timestamp");
+        const productResult = await fetchWidgetData("products");
         setProductData(productResult);
 
-        const orderResult = await fetchWidgetData("orders", "date");
+        const orderResult = await fetchWidgetData("orders");
         setOrderData(orderResult);
 
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
         setLoading(false);
       }
     };

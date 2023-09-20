@@ -49,8 +49,6 @@ export const widgetData = [
     title: "Users",
     link: "See All Users",
     category: "users",
-    amountProp: "usersAmount",
-    percentageProp: "usersPercentage",
     icon: PersonIcon,
     styles: {
       bg: "bg-red-200",
@@ -61,32 +59,40 @@ export const widgetData = [
 
   {
     id: 2,
-    title: "Orders",
-    link: "View All Orders",
-    category: "orders",
-    amountProp: "ordersAmount",
-    percentageProp: "ordersPercentage",
+    title: "Products",
+    link: "View All Products",
+    category: "products",
     icon: ShoppingCartIcon,
     styles: {
       bg: "bg-yellow-200",
       text: "text-yellow-500",
     },
-    to: "/orders",
+    to: "/products",
   },
 
   {
     id: 3,
-    title: "Earning",
-    link: "View Net Earning",
-    category: "products",
-    amountProp: "productsAmount",
-    percentageProp: "productsPercentage",
+    title: "Orders",
+    link: "View Net Orders",
+    category: "orders",
+    icon: StoreIcon,
+    styles: {
+      bg: "bg-blue-200",
+      text: "text-blue-500",
+    },
+    to: "/orders",
+  },
+
+  {
+    id: 4,
+    title: "Earnings",
+    amount: "123.000$",
+    category: "earnings",
     icon: CurrencyExchangeIcon,
     styles: {
       bg: "bg-green-200",
       text: "text-green-500",
     },
-    to: "/orders",
   },
 ];
 
