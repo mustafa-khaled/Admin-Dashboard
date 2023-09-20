@@ -47,7 +47,7 @@ export const widgetData = [
   {
     id: 1,
     title: "Users",
-    link: "See All Users",
+    link: "View All Users",
     category: "users",
     icon: PersonIcon,
     styles: {
