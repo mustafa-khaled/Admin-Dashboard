@@ -10,7 +10,7 @@ function UserInfo() {
   return (
     <div className="bg-colorGrey2 p-[20px] text-center rounded-md">
       <img
-        src="/public/default-user.jpg"
+        src="/default-user.jpg"
         alt="user Avatar"
         className="mx-auto w-[70px] rounded-full"
       />
