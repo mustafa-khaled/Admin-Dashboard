@@ -18,7 +18,7 @@
 ## Technologies Used
 
 - **React.js**: A JavaScript library for building user interfaces, utilized for creating the frontend of the application.
-- ** Redux Toolkit**: To manage global state.
+- **Redux Toolkit**: To manage global state.
 - **Firebase**: A comprehensive mobile and web application development platform that provides real-time database, authentication, hosting, and other services, allowing seamless integration and efficient management of app 
                 data and user authentication.
 - **Tailwind**: A utility-first CSS framework that streamlines web development by offering a set of pre-built utility classes, enabling rapid and responsive design with a clean and maintainable code structure.
