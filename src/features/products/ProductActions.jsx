@@ -5,7 +5,7 @@ import Modal from "../../ui/Modal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AddEditProduct from "./AddEditProduct";
-import ConfirmDelete from "../../ui/ConfirmDelete";
+import ConfirmMessage from "../../ui/ConfirmMessage";
 
 function ProductActions({ product }) {
   const dispatch = useDispatch();
@@ -32,8 +32,9 @@ function ProductActions({ product }) {
         </Modal.Open>
 
         <Modal.Window name="productConfirm">
-          <ConfirmDelete
-            resource={`Product`}
+          <ConfirmMessage
+            message="Are you sure you want to delete this Product permanently? This action
+        cannot be undone."
             onConfirm={() => handleDelete(product?.id)}
           />
         </Modal.Window>

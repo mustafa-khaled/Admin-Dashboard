@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Modal from "../../ui/Modal";
-import ConfirmDelete from "../../ui/ConfirmDelete";
+import ConfirmMessage from "../../ui/ConfirmMessage";
 
 const UsersActions = ({ id }) => {
   const dispatch = useDispatch();
@@ -36,7 +36,11 @@ const UsersActions = ({ id }) => {
         </Modal.Open>
 
         <Modal.Window name="userConfirm">
-          <ConfirmDelete resource={`User`} onConfirm={handleDelete} />
+          <ConfirmMessage
+            message="Are you sure you want to delete this User permanently? This action
+        cannot be undone."
+            onConfirm={handleDelete}
+          />
         </Modal.Window>
       </Modal>
     </div>
