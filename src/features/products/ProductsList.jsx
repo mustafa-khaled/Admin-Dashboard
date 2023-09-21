@@ -16,6 +16,7 @@ function ProductsList() {
   }, [dispatch]);
 
   if (loading) return <Loader />;
+
   if (error) return <Empty content={error} />;
 
   return (
@@ -25,12 +26,17 @@ function ProductsList() {
           <AddBoxIcon className="cursor-pointer" />
         </div>
       </AddEditProduct>
-      <div className="grid gap-[10px] grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
-        {products.length > 0 &&
-          products.map((product) => {
-            return <Product key={product.id} product={product} />;
-          })}
-      </div>
+
+      {products.length > 0 ? (
+        <div className="grid gap-[10px] grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
+          {products.length > 0 &&
+            products.map((product) => {
+              return <Product key={product.id} product={product} />;
+            })}
+        </div>
+      ) : (
+        <Empty content={"No Products To SHow"} />
+      )}
     </div>
   );
 }

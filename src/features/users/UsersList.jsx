@@ -34,33 +34,37 @@ function UsersList() {
         </AddEditUser>
       </div>
 
-      <DataGrid
-        rows={users}
-        columns={userColumns.concat(actionColumn)}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 9 },
-          },
-        }}
-        pageSizeOptions={[5, 9, 10]}
-        checkboxSelection
-        sx={{
-          color: "var(--color-grey-600)",
-          border: "1px solid var(--color-grey-300)",
-          "& .MuiDataGrid-cell": {
-            borderColor: "var(--color-grey-300)",
-          },
-          "& .MuiTablePagination-root": {
+      {!users.length ? (
+        <Empty content={"No Users To Show"} />
+      ) : (
+        <DataGrid
+          rows={users}
+          columns={userColumns.concat(actionColumn)}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 9 },
+            },
+          }}
+          pageSizeOptions={[5, 9, 10]}
+          checkboxSelection
+          sx={{
             color: "var(--color-grey-600)",
-          },
-          "& .MuiDataGrid-columnHeaders ": {
-            borderColor: "var(--color-grey-300)",
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderColor: "var(--color-grey-300)",
-          },
-        }}
-      />
+            border: "1px solid var(--color-grey-300)",
+            "& .MuiDataGrid-cell": {
+              borderColor: "var(--color-grey-300)",
+            },
+            "& .MuiTablePagination-root": {
+              color: "var(--color-grey-600)",
+            },
+            "& .MuiDataGrid-columnHeaders ": {
+              borderColor: "var(--color-grey-300)",
+            },
+            "& .MuiDataGrid-footerContainer": {
+              borderColor: "var(--color-grey-300)",
+            },
+          }}
+        />
+      )}
     </div>
   );
 }

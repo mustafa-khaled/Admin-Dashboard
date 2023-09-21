@@ -16,6 +16,7 @@ function OrdersList() {
 
   if (loading) return <Loader />;
   if (error) return <Empty content={error} />;
+  if (!orders.length) return <Empty content={"No Orders To Show"} />;
 
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-60px)]">
