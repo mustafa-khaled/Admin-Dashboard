@@ -14,7 +14,7 @@ function UserInfo() {
       <img
         src="/default-user.jpg"
         alt="user Avatar"
-        className="mx-auto w-[70px] rounded-full"
+        className="mx-auto w-[40px] rounded-full"
       />
       <h1 className="text-2xl my-[20px]">{userInfo}</h1>
 

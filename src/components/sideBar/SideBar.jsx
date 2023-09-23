@@ -8,7 +8,7 @@ function SideBar({ showSidebar, setShowSidebar }) {
   return (
     <div
       ref={sidebarRef}
-      className={`fixed transition-right duration-300 ease-out ${
+      className={`fixed transition-right duration-300  ease-in-out ${
         showSidebar ? "left-0" : "left-[-300px]"
       } top-[60px] w-[250px] z-40 border-r border-borderColor min-h-[calc(100vh-60px)] bg-colorGrey2`}>
       <Logo />
