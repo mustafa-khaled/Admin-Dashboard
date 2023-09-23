@@ -3,7 +3,6 @@ import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { newProductFormInputs } from "../../data/data";
 import { toast } from "react-toastify";
-
 import Form from "../../ui/Form";
 import UploadImage from "../../ui/UploadImage";
 
@@ -23,6 +22,9 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
 
   const isEditSession = !!productToEdit;
 
+  // Pass the current product's image URL (if available) to the UploadImage component
+  const productImageURL = productToEdit ? productToEdit.img : null;
+
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -32,7 +34,6 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
       let productDocRef;
 
       if (isEditSession) {
-        // Update the existing product
         productDocRef = doc(db, "products", productToEdit.id);
         await setDoc(productDocRef, {
           ...values,
@@ -40,7 +41,6 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
         });
         toast.success("Product Successfully Edited !");
       } else {
-        // Create a new product
         const newProductRef = doc(db, "products", uniqueProductId);
         await setDoc(newProductRef, {
           ...values,
@@ -49,7 +49,6 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
         toast.success("New Product Successfully Created !");
       }
 
-      // Reset the form and file after successful operation
       setValues(initialValues);
       setFile("");
     } catch (err) {
@@ -66,7 +65,8 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
           src={
             file
               ? URL.createObjectURL(file)
-              : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              : productImageURL ||
+                "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
           }
           alt=""
           className="w-[100px] rounded-full object-cover mx-auto"
@@ -85,6 +85,7 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
             setFile={setFile}
             setValues={setValues}
             setPer={setPer}
+            prevImageUrl={productImageURL}
           />
         </Form>
       </div>

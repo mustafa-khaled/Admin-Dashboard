@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 
-function UploadImage({ file, setFile, setValues, setPer }) {
+function UploadImage({ file, setFile, setValues, setPer, prevImageUrl }) {
+  const [previewImg, setPreviewImg] = useState(prevImageUrl || null);
+
   const uploadFile = () => {
     const loadingToastId = toast.info("Uploading image...", {
       autoClose: false,
@@ -28,6 +30,7 @@ function UploadImage({ file, setFile, setValues, setPer }) {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setValues((prev) => ({ ...prev, img: downloadURL }));
+          setPreviewImg(downloadURL);
           toast.success("Image uploaded successfully");
           toast.dismiss(loadingToastId);
         });
@@ -36,8 +39,13 @@ function UploadImage({ file, setFile, setValues, setPer }) {
   };
 
   useEffect(() => {
-    file && uploadFile();
-  }, [file, setValues]);
+    if (file) {
+      uploadFile();
+    } else if (prevImageUrl) {
+      setPreviewImg(prevImageUrl);
+      setPer(100);
+    }
+  }, [file, prevImageUrl]);
 
   return (
     <div className="w-[40%] mb-[20px]">

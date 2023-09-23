@@ -28,7 +28,10 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
 
   const navigate = useNavigate();
 
-  const isEditSession = !!userToEdit;
+  const isEditSession = userToEdit;
+
+  // Pass the current user's image URL (if available) to the UploadImage component
+  const userImageURL = userToEdit ? userToEdit.img : null;
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -74,7 +77,8 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
           src={
             file
               ? URL.createObjectURL(file)
-              : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              : userImageURL ||
+                "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
           }
           alt=""
           className="w-[100px] rounded-full object-cover mx-auto"
@@ -94,6 +98,7 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
             setFile={setFile}
             setValues={setValues}
             setPer={setPer}
+            prevImageUrl={userImageURL}
           />
         </Form>
       </div>
