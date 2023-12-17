@@ -30,19 +30,24 @@ function Window({ children, name }) {
   if (name !== openName) return null;
 
   return createPortal(
-    <div className="fixed top-0 left-0 w-full h-full z-20 ">
+    <>
       <div
-        className="z-50 fixed top-[50%] left-[50%] bg-colorGrey2 rounded-lg max-h-[80vh]  shadow-md w-[600px]  
-    p-[20px] translate-y-[-50%] translate-x-[-50%]  overflow-auto"
-        ref={ref}>
-        <button
-          onClick={close}
-          className=" absolute top-[5px] left-[5px] text-textColor">
-          <ClearIcon />
-        </button>
-        <div>{cloneElement(children, { onCloseModal: close })}</div>
+        className={`fixed left-0 top-0 w-full h-full  bg-gray-300/10 backdrop-blur-sm`}></div>
+
+      <div className="fixed top-0 left-0 w-full h-full z-20">
+        <div
+          className="z-50 fixed top-[50%] left-[50%] bg-colorGrey2 rounded-lg max-h-[80vh] shadow-md md:w-[600px]
+          md:p-[20px] p-[5px] translate-y-[-50%] translate-x-[-50%] overflow-auto w-[90%]"
+          ref={ref}>
+          <button
+            onClick={close}
+            className="absolute top-[5px] left-[5px] text-textColor">
+            <ClearIcon />
+          </button>
+          <div>{cloneElement(children, { onCloseModal: close })}</div>
+        </div>
       </div>
-    </div>,
+    </>,
     document.body
   );
 }

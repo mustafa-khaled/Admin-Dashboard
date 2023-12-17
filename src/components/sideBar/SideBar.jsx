@@ -10,7 +10,7 @@ function SideBar({ showSidebar, setShowSidebar }) {
       <div
         className={`fixed left-0 top-0 ${
           showSidebar && "w-full"
-        } h-full  bg-gray-300/10 backdrop-blur-sm`}></div>
+        } h-full  bg-gray-300/10 backdrop-blur-sm z-40`}></div>
       <div
         ref={sidebarRef}
         className={`fixed transition-right duration-300  ease-in-out ${

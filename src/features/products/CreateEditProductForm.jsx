@@ -59,8 +59,8 @@ function CreateEditProductForm({ productToEdit, onCloseModal }) {
   };
 
   return (
-    <div className="p-[20px] m-[20px] shadow-md bg-colorGrey2">
-      <div className="flex-[1] h-[100px] ">
+    <div className="md:p-[20px] p-[5px] m-[20px] shadow-md bg-colorGrey2">
+      <div className="flex-[1] h-[100px]">
         <img
           src={
             file

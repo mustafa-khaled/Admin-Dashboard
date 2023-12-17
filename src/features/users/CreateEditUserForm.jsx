@@ -71,7 +71,7 @@ function CreateEditUserForm({ userToEdit, onCloseModal }) {
   };
 
   return (
-    <div className="p-[20px] m-[20px] shadow-md  bg-colorGrey2">
+    <div className="md:p-[20px] p-[5px] m-[20px] shadow-md  bg-colorGrey2">
       <div className="flex-[1] h-[100px] ">
         <img
           src={
