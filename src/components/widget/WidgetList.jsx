@@ -34,7 +34,9 @@ function WidgetList() {
   if (loading) return <SmallLoader />;
 
   return (
-    <div className="p-[20px] grid gap-[20px] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] text-textColor">
+    <div
+      className="sm:p-[20px] p-[10px] grid gap-[20px] sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] 
+    text-textColor grid-cols-[repeat(auto-fill,minmax(230px,1fr))]">
       {widgetData.map((widget, index) => {
         let amount, percentage;
 

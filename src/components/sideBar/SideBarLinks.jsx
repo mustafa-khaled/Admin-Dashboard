@@ -3,7 +3,7 @@ import { sideBarLinks } from "../../data/data";
 
 function SideBarLinks() {
   return (
-    <div className="p-[15px]  border-t border-borderColor">
+    <div className="p-[15px] z-50 border-t border-borderColor">
       <ul>
         {sideBarLinks.map((link) => {
           const IconComponent = link.icon;
